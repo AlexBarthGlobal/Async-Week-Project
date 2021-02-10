@@ -31,3 +31,19 @@ main {
   flex-direction: column;
   justify-content: center;
 }
+
+#image {
+    width: 5em;
+    height: 5em;
+}
+
+.navLink {
+  color: white;
+  text-decoration: none;
+  padding: 10px
+}
+
+.navLink:hover {
+  transition: ease-in-out 0.12s;
+  color: rgb(171, 147, 14);
+}
