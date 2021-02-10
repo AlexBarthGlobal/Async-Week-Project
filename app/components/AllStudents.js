@@ -18,15 +18,19 @@ export class AllStudents extends React.Component {
     console.log(this.props.students)
     }
     return this.props.students ? 
-      (
+      ( <div>
+        <div>All Students</div>
         <div id='allStudents'>{this.props.students.map(student =>
-          <SingleStudent key={student.id} listId={student.id} firstName={student.firstName} lastName={student.lastName} />  
+          <SingleStudent key={student.id} listId={student.id} firstName={student.firstName} lastName={student.lastName} imageUrl={student.imageUrl}/>  
           )}       
+        </div>
         </div>
       ) 
     :   
-      ( 
-        <div>Loading</div>   
+      ( <div>
+        <div>All Students</div>
+        <div>Loading</div>
+        </div>   
       )
   };
 }

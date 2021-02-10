@@ -5,8 +5,8 @@ const db = require('./database')
 const Student = require('./student')
 const Campus = require('./campus')
 
-Student.belongsTo(Campus)
 Campus.hasMany(Student)
+Student.belongsTo(Campus)
 // Student.belongsTo(Campus)
 
 // This is a great place to establish associations between your models
@@ -18,6 +18,6 @@ Campus.hasMany(Student)
 module.exports = {
   // Include your models in this exports object as well!
   db,
-  Student,
   Campus,
+  Student,
 }

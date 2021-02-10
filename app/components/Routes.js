@@ -2,10 +2,12 @@ import React from "react";
 import { BrowserRouter as Router, Route, NavLink, Switch } from "react-router-dom";
 
 import HomePage from './HomePage'
-import AllStudents from './AllStudents'
 import AllCampuses from './AllCampuses'
-import SingleCampus from './SingleCampus'
-import SingleStudent from './SingleStudent'
+import AllStudents from './AllStudents'
+// import SingleCampus from './SingleCampus'  //I never actually link here, these are just
+// import SingleStudent from './SingleStudent' //smaller components
+import SingleCampusView from './SingleCampusView'
+import SingleStudentView from './SingleStudentView'
 
 const Routes = () => {
   return (
@@ -21,6 +23,8 @@ const Routes = () => {
             <Route exact path='/' component={HomePage}></Route>
             <Route exact path='/campuses' component={AllCampuses}></Route>
             <Route exact path='/students' component={AllStudents}></Route>
+            <Route exact path='/campuses/:id' component={SingleCampusView}></Route>
+            <Route exact path='/students/:id' component={SingleStudentView}></Route>
           </Switch>
         </main>
       </div>

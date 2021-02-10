@@ -13,20 +13,26 @@ export class AllCampuses extends React.Component {
   }
 
   render() {
-    if (this.props.campuses) {
-    console.log('AllCampuses In Props')
-    console.log(this.props.campuses)
-    }
+    // if (this.props.campuses) {
+    // console.log('AllCampuses In Props')
+    // console.log(this.props.campuses)
+    // }
+    
     return this.props.campuses ? 
       (
+        <div>
+        <div>All Campuses</div>
         <div id='allCampuses'>{this.props.campuses.map(campus =>
-          <SingleCampus key={campus.id} listId={campus.id} name={campus.name} image={campus.imageUrl} />  
+          <SingleCampus key={campus.id} listId={campus.id} name={campus.name} imageUrl={campus.imageUrl} />  
           )}       
+        </div>
         </div>
       ) 
     :   
-      ( 
-        <div>Loading</div>   
+      ( <div>
+        <div>All Campuses</div>
+        <div>Loading</div>
+        </div>   
       )
   };
 }
