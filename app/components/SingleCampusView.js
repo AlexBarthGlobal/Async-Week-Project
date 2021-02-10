@@ -1,7 +1,9 @@
 import React from 'react'
 import { connect } from "react-redux"
 import { Link } from 'react-router-dom'
+// import student from '../../server/db/student';
 import {fetchCampusAndItsStudents} from '../redux/singleCampus'
+import SingleStudent from './SingleStudent'
 
 export class SingleCampusView extends React.Component {
    
@@ -14,18 +16,17 @@ export class SingleCampusView extends React.Component {
       if (this.props.campusAndItsStudents) { //This code will run after the initial render, after the dispatch/store updates
           console.log('PROPS ON SINGLE CAMPUS VIEW')
           console.log(this.props)
-          // if (String(this.props.studentAndTheirCampus[0].gpa.length === 1) {
-          // // var floatGPA = this.props.studentAndTheirCampus[0].gpa + 0
-          //   console.log("nice")
-          // } else {
-          //   var floatGPA = this.props.studentAndTheirCampus[0].gpa
-          // }
 
-          // if (this.props.campusAndItsStudents[0].students) { //This is checking if there are students enrolled to this campus
-          //   var renderSingleCampus = <SingleStudent key={this.props.studentAndTheirCampus[0].campusInfo[0].id} listId={this.props.studentAndTheirCampus[0].campusInfo[0].id} name={this.props.studentAndTheirCampus[0].campusInfo[0].name} image={this.props.studentAndTheirCampus[0].campusInfo[0].imageUrl} />
-          // } else {
-          //   var renderSingleCampus = <div>No students enrolled here yet!</div>
-          // }
+          if (this.props.campusAndItsStudents[0].students.length) { //This is checking if there are students enrolled to this campus
+          var renderSingleCampus =
+            <div>
+              {this.props.campusAndItsStudents[0].students.map(student => 
+                <SingleStudent key={student.id} listId={student.id} firstName={student.firstName} lastName={student.lastName} imageUrl={student.imageUrl} />
+              )}
+            </div>
+          } else {
+            var renderSingleCampus = <div>No students enrolled here yet!</div>
+          }
       }
 
       //Come back and fix imageeUrl to imageUrl when you fix CSS
@@ -37,7 +38,7 @@ export class SingleCampusView extends React.Component {
               <img src={this.props.campusAndItsStudents[0].imageeUrl} alt="image"></img>
               <div>{this.props.campusAndItsStudents[0].address}</div>
               <div>{this.props.campusAndItsStudents[0].description}</div>
-              {/* {renderSingleCampus} */}
+              {renderSingleCampus}
 
 
 
