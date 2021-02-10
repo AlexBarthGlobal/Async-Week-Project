@@ -5,6 +5,10 @@ const db = require('./database')
 const Student = require('./student')
 const Campus = require('./campus')
 
+Student.belongsTo(Campus)
+Campus.hasMany(Student)
+// Student.belongsTo(Campus)
+
 // This is a great place to establish associations between your models
 // (https://sequelize-guides.netlify.com/association-types/).
 // Example:

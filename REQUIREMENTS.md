@@ -18,21 +18,21 @@ The requirements below are broken into separate **tiers**, which model the way w
 
 #### Backend
 
-- [ ] Write a route to serve up all students
-- [ ] Write a route to serve up all campuses
+- [-] Write a route to serve up all students
+- [-] Write a route to serve up all campuses
 
 - Write a `campuses` model with the following information:
-  - [ ] name - not empty or null
-  - [ ] imageUrl - with a default value
-  - [ ] address - not empty or null
-  - [ ] description - extremely large text
+  - [X] name - not empty or null
+  - [X] imageUrl - with a default value
+  - [X] address - not empty or null
+  - [X] description - extremely large text
 - Write a `students` model with the following information:
-  - [ ] firstName - not empty or null
-  - [ ] lastName - not empty or null
-  - [ ] email - not empty or null; must be a valid email
-  - [ ] imageUrl - with a default value
-  - [ ] gpa - decimal between 0.0 and 4.0
-- [ ] Students may be associated with at most one campus. Likewise, campuses may be associated with many students
+  - [X] firstName - not empty or null
+  - [X] lastName - not empty or null
+  - [X] email - not empty or null; must be a valid email
+  - [X] imageUrl - with a default value
+  - [X] gpa - decimal between 0.0 and 4.0
+- [X] Students may be associated with at most one campus. Likewise, campuses may be associated with many students
 
 #### Seed
 
