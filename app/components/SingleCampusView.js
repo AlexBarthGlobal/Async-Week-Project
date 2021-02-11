@@ -34,7 +34,7 @@ export class SingleCampusView extends React.Component {
           <div>
             <div>singleCampusView</div>
             <div id={'singleCampusView'}>
-              <div>{this.props.campusAndItsStudents[0].name}</div>
+              <div>{this.props.campusAndItsStudents[0].campusName}</div>
               <img src={this.props.campusAndItsStudents[0].imageeUrl} alt="image"></img>
               <div>{this.props.campusAndItsStudents[0].address}</div>
               <div>{this.props.campusAndItsStudents[0].description}</div>

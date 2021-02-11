@@ -8,6 +8,7 @@ import AllStudents from './AllStudents'
 // import SingleStudent from './SingleStudent' //smaller components
 import SingleCampusView from './SingleCampusView'
 import SingleStudentView from './SingleStudentView'
+import AddCampus from './AddCampus'
 
 const Routes = () => {
   return (
@@ -25,6 +26,7 @@ const Routes = () => {
             <Route exact path='/students' component={AllStudents}></Route>
             <Route exact path='/campuses/:id' component={SingleCampusView}></Route>
             <Route exact path='/students/:id' component={SingleStudentView}></Route>
+            <Route exact path='/addcampus' component={AddCampus}></Route>
           </Switch>
         </main>
       </div>
