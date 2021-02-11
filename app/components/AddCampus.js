@@ -76,6 +76,8 @@ export default connect(()=> {
   };
 })(AddCampus);
 
+// export default connect(()=> { return {};}, (dispatch, { history })=> { return { addCampus: (campus)=> dispatch(addCampusThunk(campus, history))};})(AddCampus);
+
 
 
 

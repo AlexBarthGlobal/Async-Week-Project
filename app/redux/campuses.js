@@ -1,5 +1,36 @@
 import axios from 'axios'
 
+const DELETE_CAMPUS = 'DELETE_CAMPUS'
+
+export const deleteCampus = (campus) => {
+    return {
+        type: DELETE_CAMPUS,
+        campus
+    }
+}
+
+export const deleteCampusThunk = (campus, history) => {
+  console.log("runningThunk")
+    return async (dispatch) => {
+        try { 
+            console.log(campus)         
+            // const deletedCampus = (await axios.delete(`/api/campuses/${campus}`)).data
+            await axios.delete(`/api/campuses/${campus}`)
+            console.log('CAMPUS DELETED')
+            // console.log(deletedCampus)
+            dispatch(deleteCampus(campus))
+            //history.push('/campuses')
+        } catch (err) {
+            console.log(err)
+        }
+    }
+};
+
+
+
+
+/////
+
 const ADD_CAMPUS = 'ADD_CAMPUS'
 
 export const addCampus = (campus) => {
@@ -62,6 +93,9 @@ export default function campusesReducer(state = initialState, action) {
       return action.campuses
     case ADD_CAMPUS:
       return [...state, action.campus]
+    case DELETE_CAMPUS:
+      //console.log(state)
+      return state.data.filter(campus => campus.id !== action.campus)
     default:
       return state
   }

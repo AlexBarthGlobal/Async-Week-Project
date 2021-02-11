@@ -14,10 +14,10 @@ export class AllCampuses extends React.Component {
   }
 
   render() {
-    // if (this.props.campuses) {
-    // console.log('AllCampuses In Props')
-    // console.log(this.props.campuses)
-    // }
+    if (this.props.campuses) {
+    console.log('AllCampuses In Props')
+    console.log(this.props.campuses)
+    }
     
     return this.props.campuses ? 
       (
@@ -30,8 +30,9 @@ export class AllCampuses extends React.Component {
         </div>
         </div>
       ) 
-    :   
-      ( <div>
+    :
+      ( 
+        <div>
         <div>All Campuses</div>
         <div>Loading</div>
         </div>   

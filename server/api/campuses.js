@@ -45,3 +45,14 @@ router.post('/addcampus', async (req, res, next) => {
         res.status(400).send('error')
     }
 })
+
+router.delete('/:id', async (req, res, next) => {
+    console.log(req.body)
+    try {
+        const campusToDelete = await Campus.findByPk(req.params.id);
+        await campusToDelete.destroy()
+        res.send(campusToDelete)
+    } catch (err) {
+        res.status(400).send('error')
+    }
+})
