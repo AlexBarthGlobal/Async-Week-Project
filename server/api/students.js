@@ -44,3 +44,14 @@ router.post('/addstudent', async (req, res, next) => {
         res.status(400).send('error')
     }
 })
+
+router.delete('/:id', async (req, res, next) => {
+    console.log(req.body)
+    try {
+        const studentToDelete = await Student.findByPk(req.params.id);
+        await studentToDelete.destroy()
+        res.send(studentToDelete)
+    } catch (err) {
+        res.status(400).send('error')
+    }
+})

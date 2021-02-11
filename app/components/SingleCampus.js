@@ -3,28 +3,25 @@ import { Link } from 'react-router-dom'
 import { deleteCampusThunk } from '../redux/campuses'
 import { connect } from 'react-redux'
 
+// Original code
 //Come back and fix imageeUrl to imageUrl when you fix CSS
 const SingleCampus = (props) => {
     
-    const deleteCampusInvoke = (campus) => {
-       props.deleteCampus(campus)
-    }
-   
     return(
         <div>
         <Link to={`/campuses/${props.listId}`}>{props.name}</Link>
         <div id="image">
         <Link to={`/campuses/${props.listId}`}><img src={props.imageeUrl} alt="image"></img></Link>
         </div>
-        <button className='delete' onClick={() => deleteCampusInvoke(props.listId)}>Delete</button>
+        <button className='delete' onClick={() => props.deleteCampus(props.listId)}>Delete</button>
         <div>SingleCampus Dummy Component</div>
         </div>    
     )
 }
 
-const mapDispatch = (dispatch, history) => {
+const mapDispatch = (dispatch) => {
     return {
-    deleteCampus: (campus) => dispatch(deleteCampusThunk(campus, history))
+    deleteCampus: (campus) => dispatch(deleteCampusThunk(campus))
     };      
 };
 
@@ -32,42 +29,42 @@ export default connect(null, mapDispatch)(SingleCampus)
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-// import React from 'react'
-// import { Link } from 'react-router-dom'
-// import { deleteCampusThunk } from '../redux/campuses'
-
-// //Come back and fix imageeUrl to imageUrl when you fix CSS
-// const SingleCampus = (props) => {
-
-//     const deleteCampus = (campus) => {
-//        deleteCampusThunk(campus)
+// Come back and fix imageeUrl to imageUrl when you fix CSS
+// class SingleCampus extends React.Component {
+   
+//     render() {
+//         console.log('YOOOOOOO')
+//         console.log(this.props)
+//     return(
+//         <div>
+//         <Link to={`/campuses/${this.props.listId}`}>{this.props.name}</Link>
+//         <div id="image">
+//         <Link to={`/campuses/${this.props.listId}`}><img src={this.props.imageeUrl} alt="image"></img></Link>
+//         </div>
+//         <button className='delete' onClick={() => this.props.deleteCampus(this.props.listId)}>Delete</button>
+//         <div>SingleCampus Dummy Component</div>
+//         </div>    
+//     )
 //     }
-   
-//     return(
-//         <div>
-//         <Link to={`/campuses/${props.listId}`}>{props.name}</Link>
-//         <div id="image">
-//         <Link to={`/campuses/${props.listId}`}><img src={props.imageeUrl} alt="image"></img></Link>
-//         </div>
-//         <button className='delete' onClick={() => deleteCampus(props.listId)}>Delete</button>
-//         <div>SingleCampus Dummy Component</div>
-//         </div>    
-//     )
 // }
 
-// export default SingleCampus
+// const mapDispatch = (dispatch, history) => {
+//     return {
+//     deleteCampus: (campus) => dispatch(deleteCampusThunk(campus, history))
+//     };      
+// };
+
+// const mapState = (state) => {
+//     console.log("THIS IS THE STATE!!!!!")
+//     console.log(state)
+//     return {
+//       students: state
+//     };
+//   };
+
+// export default connect(mapState, mapDispatch)(SingleCampus) 
+
+// export default connect (null, (dispatch, { history })=> { return { deleteCampus: (campus)=> dispatch(deleteCampusThunk(campus, history))};})(SingleCampus)
 
 
 
@@ -75,18 +72,5 @@ export default connect(null, mapDispatch)(SingleCampus)
 
 
 
-// const SingleCampus = (props) => {
-   
-//     return(
-//         <div>
-//         <Link to={`/campuses/${props.listId}`}>{props.name}</Link>
-//         <div id="image">
-//         <Link to={`/campuses/${props.listId}`}><img src={props.imageeUrl} alt="image"></img></Link>
-//         </div>
-//         <div>Delete</div>
-//         <div>SingleCampus Dummy Component</div>
-//         </div>    
-//     )
-// }
 
-// export default SingleCampus
+

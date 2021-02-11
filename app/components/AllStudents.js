@@ -18,8 +18,11 @@ export class AllStudents extends React.Component {
     console.log('AllStudents In Props')
     console.log(this.props.students)
     }
-    return this.props.students ? 
-      ( <div>
+
+
+    if (this.props.students) { 
+
+      return ( <div>
         <div>All Students</div>
         <Link to={`/addstudent`}>Add Student</Link>
         <div id='allStudents'>{this.props.students.map(student =>
@@ -28,12 +31,16 @@ export class AllStudents extends React.Component {
         </div>
         </div>
       ) 
-    :   
-      ( <div>
-        <div>All Students</div>
-        <div>Loading</div>
-        </div>   
+        } else {  
+
+      this.props.loadStudents()
+
+      return ( <div>
+                <div>All Students</div>
+                <div>Loading</div>
+              </div>   
       )
+    }
   };
 }
 
@@ -50,3 +57,30 @@ const mapDispatch = (dispatch) => {
 };
 
 export default connect(mapState, mapDispatch)(AllStudents);
+
+
+
+//Original render
+// render() {
+//   if (this.props.students) {
+//   console.log('AllStudents In Props')
+//   console.log(this.props.students)
+//   }
+//   return this.props.students ? 
+//     ( <div>
+//       <div>All Students</div>
+//       <Link to={`/addstudent`}>Add Student</Link>
+//       <div id='allStudents'>{this.props.students.map(student =>
+//         <SingleStudent key={student.id} listId={student.id} firstName={student.firstName} lastName={student.lastName} imageUrl={student.imageUrl}/>  
+//         )}       
+//       </div>
+//       </div>
+//     ) 
+//   :   
+//     ( <div>
+//       <div>All Students</div>
+//       <div>Loading</div>
+//       </div>   
+//     )
+// };
+// }

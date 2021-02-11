@@ -9,7 +9,7 @@ export const deleteCampus = (campus) => {
     }
 }
 
-export const deleteCampusThunk = (campus, history) => {
+export const deleteCampusThunk = (campus) => {
   console.log("runningThunk")
     return async (dispatch) => {
         try { 
@@ -19,7 +19,7 @@ export const deleteCampusThunk = (campus, history) => {
             console.log('CAMPUS DELETED')
             // console.log(deletedCampus)
             dispatch(deleteCampus(campus))
-            //history.push('/campuses')
+            // history.push('/campuses')
         } catch (err) {
             console.log(err)
         }
@@ -94,7 +94,8 @@ export default function campusesReducer(state = initialState, action) {
     case ADD_CAMPUS:
       return [...state, action.campus]
     case DELETE_CAMPUS:
-      //console.log(state)
+      console.log("THIS IS THE STATE")
+      console.log(state)
       return state.data.filter(campus => campus.id !== action.campus)
     default:
       return state

@@ -19,25 +19,30 @@ export class AllCampuses extends React.Component {
     console.log(this.props.campuses)
     }
     
-    return this.props.campuses ? 
-      (
+    if (this.props.campuses) {
+
+      return (
         <div>
         <div>All Campuses</div>
         <Link to={`/addcampus`}>Add Campus</Link>
         <div id='allCampuses'>{this.props.campuses.map(campus =>
-          <SingleCampus key={campus.id} listId={campus.id} name={campus.campusName} imageUrl={campus.imageUrl} />  
+          <SingleCampus key={campus.id} listId={campus.id} name={campus.campusName} imageUrl={campus.imageUrl} />
           )}       
         </div>
         </div>
       ) 
-    :
-      ( 
+    } else {
+      
+      this.props.loadCampuses()
+      
+      return (
         <div>
         <div>All Campuses</div>
         <div>Loading</div>
         </div>   
       )
-  };
+    };
+  }
 }
 
 const mapState = (state) => {
@@ -53,3 +58,31 @@ const mapDispatch = (dispatch) => {
 };
 
 export default connect(mapState, mapDispatch)(AllCampuses);
+
+
+//Original render
+// render() {
+//   if (this.props.campuses) {
+//   console.log('AllCampuses In Props')
+//   console.log(this.props.campuses)
+//   }
+  
+//   return this.props.campuses ? 
+//     (
+//       <div>
+//       <div>All Campuses</div>
+//       <Link to={`/addcampus`}>Add Campus</Link>
+//       <div id='allCampuses'>{this.props.campuses.map(campus =>
+//         <SingleCampus key={campus.id} listId={campus.id} name={campus.campusName} imageUrl={campus.imageUrl} />  
+//         )}       
+//       </div>
+//       </div>
+//     ) 
+//   :
+//     ( 
+//       <div>
+//       <div>All Campuses</div>
+//       <div>Loading</div>
+//       </div>   
+//     )
+// };
