@@ -1,12 +1,12 @@
 import React from 'react';
-import { addCampusThunk } from '../redux/addcampus';
+import { addCampusThunk } from '../redux/campuses';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 
-const defaultState = {
-  taskName: '',
-  assignee: '',
-}
+// const defaultState = {
+//   taskName: '',
+//   assignee: '',
+// }
 
 class AddCampus extends React.Component {
   constructor () {

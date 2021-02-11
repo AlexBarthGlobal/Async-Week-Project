@@ -1,5 +1,34 @@
 import axios from 'axios'
 
+const ADD_CAMPUS = 'ADD_CAMPUS'
+
+export const addCampus = (campus) => {
+    return {
+        type: ADD_CAMPUS,
+        campus
+    }
+}
+
+export const addCampusThunk = (campus, history) => {
+    return async (dispatch) => {
+        try {
+            const addedCampus = (await axios.post(`/api/campuses/addcampus`, campus)).data
+            console.log('THIS IS THE CAMPUS ADDED')
+            console.log(addedCampus)
+            dispatch(addCampus(addedCampus))
+            history.push('/campuses')
+        } catch (err) {
+            console.log('error')
+        }
+    }
+};
+
+/////
+
+
+
+
+
 //Action label
 const SET_CAMPUSES = 'SET_CAMPUSES'
 
@@ -31,6 +60,8 @@ export default function campusesReducer(state = initialState, action) {
   switch (action.type) {
     case SET_CAMPUSES:
       return action.campuses
+    case ADD_CAMPUS:
+      return [...state, action.campus]
     default:
       return state
   }

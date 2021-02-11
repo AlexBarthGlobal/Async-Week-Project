@@ -34,3 +34,13 @@ router.get('/:id', async (req, res, next) => {
         res.status(400).send('error')
     }
 })
+
+router.post('/addstudent', async (req, res, next) => {
+    //const studentData = req.body
+    console.log(req.body)
+    try {   
+        res.status(201).send(await Student.create(req.body));
+    } catch (err) {
+        res.status(400).send('error')
+    }
+})

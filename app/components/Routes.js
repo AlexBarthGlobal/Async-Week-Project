@@ -9,6 +9,7 @@ import AllStudents from './AllStudents'
 import SingleCampusView from './SingleCampusView'
 import SingleStudentView from './SingleStudentView'
 import AddCampus from './AddCampus'
+import AddStudent from './AddStudent'
 
 const Routes = () => {
   return (
@@ -27,6 +28,7 @@ const Routes = () => {
             <Route exact path='/campuses/:id' component={SingleCampusView}></Route>
             <Route exact path='/students/:id' component={SingleStudentView}></Route>
             <Route exact path='/addcampus' component={AddCampus}></Route>
+            <Route exact path='/addstudent' component={AddStudent}></Route>
           </Switch>
         </main>
       </div>
