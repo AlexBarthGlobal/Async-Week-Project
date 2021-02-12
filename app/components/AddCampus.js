@@ -94,21 +94,3 @@ export default connect(()=> {
 
 
 
-
-
-// import React from 'react'
-// import { Link } from 'react-router-dom'
-
-// //Come back and fix imageeUrl to imageUrl when you fix CSS
-// const AddCampus = (props) => {
-
-//     console.log(props)
-   
-//     return(
-//         <div>
-//             Let's add a campus
-//         </div>    
-//     )
-// }
-
-// export default AddCampus

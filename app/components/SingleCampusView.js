@@ -29,13 +29,12 @@ export class SingleCampusView extends React.Component {
           }
       }
 
-      //Come back and fix imageeUrl to imageUrl when you fix CSS
       return this.props.campusAndItsStudents ? (
           <div>
             <div>singleCampusView</div>
             <div id={'singleCampusView'}>
               <div>{this.props.campusAndItsStudents[0].campusName}</div>
-              <img src={this.props.campusAndItsStudents[0].imageeUrl} alt="image"></img>
+              <img src={this.props.campusAndItsStudents[0].imageUrl} alt="image"></img>
               <div>{this.props.campusAndItsStudents[0].address}</div>
               <div>{this.props.campusAndItsStudents[0].description}</div>
               <button><Link to={{pathname: `/campuses/edit/${this.props.campusAndItsStudents[0].id}`, state:{prevUrl: location.pathname}}}>Edit Campus</Link></button>

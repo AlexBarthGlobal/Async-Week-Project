@@ -23,7 +23,7 @@ export class SingleStudentView extends React.Component {
             //   var floatGPA = this.props.studentAndTheirCampus[0].gpa
             // }
             if (this.props.studentAndTheirCampus[0].campusInfo) { //This is checking if the student is enrolled to a campus
-              var renderSingleCampus = <SingleCampus key={this.props.studentAndTheirCampus[0].campusInfo[0].id} listId={this.props.studentAndTheirCampus[0].campusInfo[0].id} name={this.props.studentAndTheirCampus[0].campusInfo[0].campusName} image={this.props.studentAndTheirCampus[0].campusInfo[0].imageUrl} />
+              var renderSingleCampus = <SingleCampus key={this.props.studentAndTheirCampus[0].campusInfo[0].id} listId={this.props.studentAndTheirCampus[0].campusInfo[0].id} name={this.props.studentAndTheirCampus[0].campusInfo[0].campusName} imageUrl={this.props.studentAndTheirCampus[0].campusInfo[0].imageUrl} />
             } else {
               var renderSingleCampus = <div>Not enrolled yet!</div>
             }

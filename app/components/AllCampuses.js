@@ -26,10 +26,12 @@ export class AllCampuses extends React.Component {
 
       return (
         <div>
-        <div>All Campuses</div>
+        <div className='centerThis'>
+        <div className=''>All Campuses</div>
         <button><Link to={`/addcampus`}>Add Campus</Link></button>
-        <div id='allCampuses'>{this.props.campuses.map(campus =>
-        <div key={campus.id}>
+        </div>
+        <div className="allCampuses">{this.props.campuses.map(campus =>
+        <div key={campus.id} className="singleCampus">
           <SingleCampus listId={campus.id} name={campus.campusName} imageUrl={campus.imageUrl} />
           <button className='delete' onClick={() => this.props.deleteCampus(campus.id)}>Delete</button>
         </div>
