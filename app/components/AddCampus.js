@@ -32,14 +32,17 @@ class AddCampus extends React.Component {
   async handleSubmit (evt) {
     evt.preventDefault()
     const campus = {};
-    this.props.addCampus({ ...this.state })
+    this.props.addCampus({ data: { ...this.state }, prevUrl: '/students' })
   }
 
   render () {
     const { campusName, address, imageUrl, description } = this.state;
     const { handleSubmit, handleChange } = this;
+
     return (
       <form id='add-campus' onSubmit={handleSubmit}>
+
+        <h2>Add Campus</h2>
 
         <label htmlFor='campusName'>
           Campus Name

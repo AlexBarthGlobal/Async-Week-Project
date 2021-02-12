@@ -3,6 +3,7 @@ import { connect } from "react-redux";
 import {fetchCampuses} from '../redux/campuses'
 import SingleCampus from './SingleCampus'
 import { Link } from 'react-router-dom'
+import { deleteCampusThunk } from '../redux/campuses'
 
 // Notice that we're exporting the AllCampuses component twice. The named export
 // (below) is not connected to Redux, while the default export (at the very
@@ -10,7 +11,9 @@ import { Link } from 'react-router-dom'
 export class AllCampuses extends React.Component {
 
   componentDidMount() {
+    if (!this.props.campuses) {
     this.props.loadCampuses();
+    }
   }
 
   render() {
@@ -24,9 +27,12 @@ export class AllCampuses extends React.Component {
       return (
         <div>
         <div>All Campuses</div>
-        <Link to={`/addcampus`}>Add Campus</Link>
+        <button><Link to={`/addcampus`}>Add Campus</Link></button>
         <div id='allCampuses'>{this.props.campuses.map(campus =>
-          <SingleCampus key={campus.id} listId={campus.id} name={campus.campusName} imageUrl={campus.imageUrl} />
+        <div key={campus.id}>
+          <SingleCampus listId={campus.id} name={campus.campusName} imageUrl={campus.imageUrl} />
+          <button className='delete' onClick={() => this.props.deleteCampus(campus.id)}>Delete</button>
+        </div>
           )}       
         </div>
         </div>
@@ -53,7 +59,8 @@ const mapState = (state) => {
 
 const mapDispatch = (dispatch) => {
   return {
-    loadCampuses: () => dispatch(fetchCampuses())
+    loadCampuses: () => dispatch(fetchCampuses()),
+    deleteCampus: (campus) => dispatch(deleteCampusThunk(campus))
   };
 };
 

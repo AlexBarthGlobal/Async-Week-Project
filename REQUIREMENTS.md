@@ -117,7 +117,7 @@ Congrats! You have completed your third vertical slice! Make sure to `commit -m 
   - [X] Make an AJAX request that causes that student to be removed from database
   - [X] Remove the student from the list of students without needing to refresh the page
   
-** [ ] Fix Deleting Students and Campuses on both SingleView pages
+** [X] Fix Deleting Students and Campuses on both SingleView pages
        Or maybe remove this functionality from those pages.
        Try refactoring by adding the delete button from the AllCampuses / AllStudents pages instead of from within the Dummy Components
 
@@ -136,11 +136,11 @@ Congrats! You have completed your fourth vertical slice! Make sure to `commit -m
 
 #### Frontend
 
-- [ ] Write a component to display a form updating _at least_ a campus's name and address
-- [ ] Display this component as part of the single-campus view, alongside the single campus
+- [X] Write a component to display a form updating _at least_ a campus's name and address
+- [X] Display this component as part of the single-campus view, alongside the single campus
 - Submitting the form with valid data should:
-  - [ ] Make an AJAX request that causes that campus to be updated in the database
-  - [ ] Update the campus in the current view without needing to refresh the page
+  - [X] Make an AJAX request that causes that campus to be updated in the database
+  - [X] Update the campus in the current view without needing to refresh the page
 - [ ] In the single-campus view, display an `Unregister` button next to each of its students, which removes the student from the campus (in the database as well as this view); hint: the student is still in the database but is no longer associated with the campus
 
 - [ ] Write a component to display a form updating _at least_ a student's first and last names, and email
@@ -151,7 +151,7 @@ Congrats! You have completed your fourth vertical slice! Make sure to `commit -m
 
 #### Backend
 
-- [ ] Write a route to update an existing campus
+- [X] Write a route to update an existing campus
 - [ ] Write a route to update an existing student
 
 </details>

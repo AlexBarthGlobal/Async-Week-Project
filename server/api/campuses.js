@@ -56,3 +56,23 @@ router.delete('/:id', async (req, res, next) => {
         res.status(400).send('error')
     }
 })
+
+// router.put('/:id', async(req, res, next) => {
+//     try {
+//       const todo = await Todo.findByPk(req.params.id)
+//       res.send(await todo.update(req.body));
+//     }
+//     catch(ex){
+//       next(ex);
+//     }
+//   });
+
+router.put('/edit/:id', async (req, res, next) => {
+    console.log(req.body)
+    try {
+        const campusToUpdate = await Campus.findByPk(req.params.id)
+        res.send(await campusToUpdate.update(req.body));
+    } catch (err) {
+        res.status(400).send('error')
+    }
+})

@@ -1,6 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import { deleteCampusThunk } from '../redux/campuses'
+// import { deleteCampusThunk } from '../redux/campuses'
 import { connect } from 'react-redux'
 
 // Original code
@@ -13,19 +13,23 @@ const SingleCampus = (props) => {
         <div id="image">
         <Link to={`/campuses/${props.listId}`}><img src={props.imageeUrl} alt="image"></img></Link>
         </div>
-        <button className='delete' onClick={() => props.deleteCampus(props.listId)}>Delete</button>
+        {/* <button className='delete' onClick={() => props.deleteCampus(props.listId)}>Delete</button> */}
         <div>SingleCampus Dummy Component</div>
         </div>    
     )
 }
 
-const mapDispatch = (dispatch) => {
-    return {
-    deleteCampus: (campus) => dispatch(deleteCampusThunk(campus))
-    };      
-};
+export default SingleCampus
 
-export default connect(null, mapDispatch)(SingleCampus) 
+// const mapDispatch = (dispatch) => {
+//     return {
+//     deleteCampus: (campus) => dispatch(deleteCampusThunk(campus))
+//     };      
+// };
+
+// export default connect(null, null)(SingleCampus) 
+
+
 
 
 

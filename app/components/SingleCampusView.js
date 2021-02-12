@@ -38,6 +38,7 @@ export class SingleCampusView extends React.Component {
               <img src={this.props.campusAndItsStudents[0].imageeUrl} alt="image"></img>
               <div>{this.props.campusAndItsStudents[0].address}</div>
               <div>{this.props.campusAndItsStudents[0].description}</div>
+              <button><Link to={{pathname: `/campuses/edit/${this.props.campusAndItsStudents[0].id}`, state:{prevUrl: location.pathname}}}>Edit Campus</Link></button>
               {renderSingleCampus}
 
 

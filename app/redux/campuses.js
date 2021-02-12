@@ -1,5 +1,35 @@
 import axios from 'axios'
 
+const EDIT_CAMPUS = 'EDIT_CAMPUS'
+
+export const editCampus = (campus) => {
+    return {
+        type: EDIT_CAMPUS,
+        campus
+    }
+}
+
+export const editCampusThunk = (campus, history) => {
+    return async (dispatch) => {
+        try {
+          console.log('THIS IS THE DATA IN THE THUNK')
+          console.log(campus)
+            const addedCampus = (await axios.put(`/api/campuses/edit/${campus.campusId}`, campus.data)).data
+            console.log('THIS IS THE CAMPUS EDITED')
+            console.log(addedCampus)
+            dispatch(addCampus(addedCampus))
+            history.push(campus.prevUrl.prevUrl)
+            // history.push('/campuses')  // '/campuses'
+        } catch (err) {
+            console.log('error')
+        }
+    }
+};
+
+
+///
+
+
 const DELETE_CAMPUS = 'DELETE_CAMPUS'
 
 export const deleteCampus = (campus) => {
@@ -43,11 +73,11 @@ export const addCampus = (campus) => {
 export const addCampusThunk = (campus, history) => {
     return async (dispatch) => {
         try {
-            const addedCampus = (await axios.post(`/api/campuses/addcampus`, campus)).data
+            const addedCampus = (await axios.post(`/api/campuses/addcampus`, campus.data)).data
             console.log('THIS IS THE CAMPUS ADDED')
             console.log(addedCampus)
             dispatch(addCampus(addedCampus))
-            history.push('/campuses')
+            history.push('/campuses')  // '/campuses'
         } catch (err) {
             console.log('error')
         }
@@ -97,6 +127,8 @@ export default function campusesReducer(state = initialState, action) {
       console.log("THIS IS THE STATE")
       console.log(state)
       return state.data.filter(campus => campus.id !== action.campus)
+    case EDIT_CAMPUS:
+      return state.map(campus => campus.id === action.campus.id ? action.campus : campus);
     default:
       return state
   }
