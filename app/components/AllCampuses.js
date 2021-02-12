@@ -28,7 +28,7 @@ export class AllCampuses extends React.Component {
         <div>
         <div className='centerThis marginTop'>
         <div>All Campuses</div>
-        <button><Link to={`/addcampus`}>Add Campus</Link></button>
+        <Link to={`/addcampus`}><button>Add Campus</button></Link>
         </div>
         <div className="allItems">{this.props.campuses.map(campus =>
         <div key={campus.id} className="singleItem">

@@ -42,7 +42,7 @@ export class SingleStudentView extends React.Component {
                 <div className='marginBottom'>Email: {this.props.studentAndTheirCampus[0].email}</div>
                 <div className='marginBottom'>GPA: {this.props.studentAndTheirCampus[0].gpa}</div>
                 {/* {floatGPA} */}
-                <button><Link to={{pathname: `/students/edit/${this.props.studentAndTheirCampus[0].id}`, state:{prevUrl: location.pathname}}} className=''>Edit Student</Link></button>
+                <Link to={{pathname: `/students/edit/${this.props.studentAndTheirCampus[0].id}`, state:{prevUrl: location.pathname}}} className=''><button>Edit Student</button></Link>
               </div>
               <div className='allItems'>
                 {renderSingleCampus}

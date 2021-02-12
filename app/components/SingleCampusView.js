@@ -1,7 +1,6 @@
 import React from 'react'
 import { connect } from "react-redux"
 import { Link } from 'react-router-dom'
-// import student from '../../server/db/student';
 import {fetchCampusAndItsStudents} from '../redux/singleCampus'
 import SingleStudent from './SingleStudent'
 
@@ -39,7 +38,7 @@ export class SingleCampusView extends React.Component {
               <img src={this.props.campusAndItsStudents[0].imageUrl} alt="image" className='largeImage'></img>
               <div>{this.props.campusAndItsStudents[0].address}</div>
               <div className='marginTop bodySize'>{this.props.campusAndItsStudents[0].description}</div>
-              <button><Link to={{pathname: `/campuses/edit/${this.props.campusAndItsStudents[0].id}`, state:{prevUrl: location.pathname}}}>Edit Campus</Link></button>
+              <Link to={{pathname: `/campuses/edit/${this.props.campusAndItsStudents[0].id}`, state:{prevUrl: location.pathname}}}><button>Edit Campus</button></Link>
           </div>
               {renderStudentsFromCampus}
           </div>  

@@ -146,6 +146,66 @@ const seed = async () => {
       gpa: 3.7,
     })
 
+    ////////////////// TESTING DUKE SINGLE CAMPUS VIEW //////////
+
+    const Jac = await Student.create({
+      firstName: 'Jack',
+      lastName: 'Thompson',
+      email: 'jackthompson@email.com',
+      imageUrl: 'https://pbs.twimg.com/media/BtFUrp6CEAEmsml.jpg',
+      gpa: 3.8,
+    })
+    await Jac.setCampus(Duke)
+
+    const Ja = await Student.create({
+      firstName: 'Jack',
+      lastName: 'Thompson',
+      email: 'jackthompson@email.com',
+      imageUrl: 'https://pbs.twimg.com/media/BtFUrp6CEAEmsml.jpg',
+      gpa: 3.8,
+    })
+    await Ja.setCampus(Duke)
+
+    const J = await Student.create({
+      firstName: 'Jack',
+      lastName: 'Thompson',
+      email: 'jackthompson@email.com',
+      imageUrl: 'https://pbs.twimg.com/media/BtFUrp6CEAEmsml.jpg',
+      gpa: 3.8,
+    })
+    await J.setCampus(Duke)
+
+    const A = await Student.create({
+      firstName: 'Jack',
+      lastName: 'Thompson',
+      email: 'jackthompson@email.com',
+      imageUrl: 'https://pbs.twimg.com/media/BtFUrp6CEAEmsml.jpg',
+      gpa: 3.8,
+    })
+    await A.setCampus(Duke)
+
+    const B = await Student.create({
+      firstName: 'Jack',
+      lastName: 'Thompson',
+      email: 'jackthompson@email.com',
+      imageUrl: 'https://pbs.twimg.com/media/BtFUrp6CEAEmsml.jpg',
+      gpa: 3.8,
+    })
+    await B.setCampus(Duke)
+
+    const JD = await Student.create({
+      firstName: 'Jack',
+      lastName: 'Thompson',
+      email: 'jackthompson@email.com',
+      imageUrl: 'https://pbs.twimg.com/media/BtFUrp6CEAEmsml.jpg',
+      gpa: 3.8,
+    })
+    await JD.setCampus(Duke)
+
+
+
+    /////////////////////////////////////////////
+
     const Yale = await Campus.create({
       campusName: 'Yale University',
       address: 'New Haven, CT',
