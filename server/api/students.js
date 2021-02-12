@@ -55,3 +55,13 @@ router.delete('/:id', async (req, res, next) => {
         res.status(400).send('error')
     }
 })
+
+router.put('/edit/:id', async (req, res, next) => {
+    console.log(req.body)
+    try {
+        const studentToUpdate = await Student.findByPk(req.params.id)
+        res.send(await studentToUpdate.update(req.body));
+    } catch (err) {
+        res.status(400).send('error')
+    }
+})

@@ -42,6 +42,8 @@ class AddStudent extends React.Component {
     return (
       <form id='add-student' onSubmit={handleSubmit}>
 
+       <h2>Add Student</h2>
+
         <label htmlFor='firstName'>
           First Name
         </label>

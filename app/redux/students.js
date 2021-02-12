@@ -1,5 +1,35 @@
 import axios from 'axios'
 
+const EDIT_STUDENT = 'EDIT_STUDENT'
+
+export const editStudent = (student) => {
+    return {
+        type: EDIT_STUDENT,
+        student
+    }
+}
+
+export const editStudentThunk = (student, history) => {
+    return async (dispatch) => {
+        try {
+          console.log('THIS IS THE DATA IN THE THUNK')
+          console.log(student)
+            const addedStudent = (await axios.put(`/api/students/edit/${student.studentId}`, student.data)).data
+            console.log('THIS IS THE CAMPUS EDITED')
+            console.log(addedStudent)
+            dispatch(addStudent(addedStudent))
+            history.push(student.prevUrl.prevUrl)
+            // history.push('/campuses')  // '/campuses'
+        } catch (err) {
+            console.log('error')
+        }
+    }
+};
+
+
+///
+
+
 const DELETE_STUDENT = 'DELETE_STUDENT'
 
 export const deleteStudent = (student) => {
@@ -96,6 +126,8 @@ export default function studentsReducer(state = initialState, action) {
       console.log("THIS IS THE STATE")
       console.log(state)
       return state.data.filter(student => student.id !== action.student)
+      case EDIT_STUDENT:
+      return state.map(student => student.id === action.student.id ? action.student : student);
     default:
       return state
   }

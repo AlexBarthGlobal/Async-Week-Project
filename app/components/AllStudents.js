@@ -25,7 +25,7 @@ export class AllStudents extends React.Component {
 
       return ( <div>
         <div>All Students</div>
-        <Link to={`/addstudent`}>Add Student</Link>
+        <button><Link to={`/addstudent`}>Add Student</Link></button>
         <div id='allStudents'>{this.props.students.map(student =>
         <div key={student.id}>
           <SingleStudent key={student.id} listId={student.id} firstName={student.firstName} lastName={student.lastName} imageUrl={student.imageUrl}/>
