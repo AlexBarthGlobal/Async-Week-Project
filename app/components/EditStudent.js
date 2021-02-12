@@ -71,37 +71,39 @@ class EditStudent extends React.Component {
     const { handleSubmit, handleChange } = this;
 
     return (
-      <form id='add-campus' onSubmit={handleSubmit}>
+      <form className='addEditForm' onSubmit={handleSubmit}>
 
         <h2>Edit Student</h2>
 
         <label htmlFor='firstName'>
-          First Name
+          First Name:
         </label>
         <input name='firstName' onChange={handleChange} value={firstName} />
 
         <label htmlFor='lastName'>
-          Last Name
+          Last Name:
         </label>
         <input name='lastName' onChange={handleChange} value={lastName} />
 
         <label htmlFor='email'>
-          email
+          email:
         </label>
         <input name='email' onChange={handleChange} value={email} />
 
         <label htmlFor='imageUrl'>
-          Profile Image URL
+          Profile Image URL:
         </label>
         <input name='imageUrl' onChange={handleChange} value={imageUrl} />
 
         <label htmlFor='gpa'>
-          GPA
+          GPA:
         </label>
         <input name='gpa' onChange={handleChange} value={gpa} />
 
-        <button type='submit'>Submit Changes</button>
-        <Link to='/'>Cancel</Link>
+        <div className='flexRow'>
+        <button className='formButton' type='submit'>Submit Changes</button>
+        <Link to='/'><button className='formButton'>Cancel</button></Link>
+        </div>
       </form>
     )
   }

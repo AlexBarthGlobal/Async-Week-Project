@@ -7,8 +7,12 @@ const SingleStudent = (props) => {
    
     return(
         <div>
-        <Link to={`/students/${props.listId}`}><img src={props.imageUrl} alt="image"></img></Link>
-        <Link to={`/students/${props.listId}`}>{`${props.firstName} ${props.lastName}`}</Link>
+            <div className='centerThis'>
+        <Link to={`/students/${props.listId}`}><img src={props.imageUrl} alt="image" className="smallImage"></img></Link>
+            </div>
+            <div>
+        <div className='centerThis'><Link to={`/students/${props.listId}`}>{`${props.firstName} ${props.lastName}`}</Link></div>
+            </div>
         {/* <button className='delete' onClick={() => props.deleteStudent(props.listId)}>Delete</button> */}
         </div>    
     )

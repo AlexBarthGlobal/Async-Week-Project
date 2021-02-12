@@ -2,7 +2,7 @@ import React from 'react'
 
 function HomePage() {
     return (
-        <div>Here's the homepage</div>
+        <div className='centerThis marginTop'>Welcome! Select the Campuses or Students in the nav bar to get started!</div>
     )
 }
 

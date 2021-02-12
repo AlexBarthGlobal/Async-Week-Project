@@ -40,32 +40,33 @@ class AddCampus extends React.Component {
     const { handleSubmit, handleChange } = this;
 
     return (
-      <form id='add-campus' onSubmit={handleSubmit}>
+      <form className='addEditForm' onSubmit={handleSubmit}>
 
         <h2>Add Campus</h2>
 
         <label htmlFor='campusName'>
-          Campus Name
+          Campus Name:
         </label>
         <input name='campusName' onChange={handleChange} value={campusName} />
 
         <label htmlFor='address'>
-          Campus Location
+          Campus Location:
         </label>
         <input name='address' onChange={handleChange} value={address} />
 
         <label htmlFor='imageUrl'>
-          Campus Image URL
+          Campus Image URL:
         </label>
         <input name='imageUrl' onChange={handleChange} value={imageUrl} />
 
         <label htmlFor='campusDescription'>
-          Campus Description
+          Campus Description:
         </label>
         <input name='description' onChange={handleChange} value={description} />
-
-        <button type='submit'>Add Campus</button>
-        <Link to='/'>Cancel</Link>
+        <div className='flexRow'>
+        <button type='submit' className='formButton'>Submit</button>
+        <Link to='/campuses'><button className='formButton'>Cancel</button></Link>
+        </div>
       </form>
     )
   }
@@ -78,19 +79,3 @@ export default connect(()=> {
     addCampus: (campus)=> dispatch(addCampusThunk(campus, history))
   };
 })(AddCampus);
-
-// export default connect(()=> { return {};}, (dispatch, { history })=> { return { addCampus: (campus)=> dispatch(addCampusThunk(campus, history))};})(AddCampus);
-
-
-
-
-
-
-
-
-
-
-
-
-
-

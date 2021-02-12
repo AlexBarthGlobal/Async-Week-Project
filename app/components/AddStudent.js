@@ -40,37 +40,39 @@ class AddStudent extends React.Component {
     const { firstName, lastName, email, imageUrl, gpa } = this.state;
     const { handleSubmit, handleChange } = this;
     return (
-      <form id='add-student' onSubmit={handleSubmit}>
+      <form className='addEditForm' onSubmit={handleSubmit}>
 
        <h2>Add Student</h2>
 
         <label htmlFor='firstName'>
-          First Name
+          First Name:
         </label>
         <input name='firstName' onChange={handleChange} value={firstName} />
 
         <label htmlFor='lastName'>
-          Last Name
+          Last Name:
         </label>
         <input name='lastName' onChange={handleChange} value={lastName} />
 
         <label htmlFor='email'>
-          Email Address
+          Email Address:
         </label>
         <input name='email' onChange={handleChange} value={email} />
 
         <label htmlFor='imageUrl'>
-          Profile Picture
+          Profile Picture:
         </label>
         <input name='imageUrl' onChange={handleChange} value={imageUrl} />
 
         <label htmlFor='gpa'>
-          GPA
+          GPA:
         </label>
         <input name='gpa' onChange={handleChange} value={gpa} />
 
-        <button type='submit'>Add Student</button>
-        <Link to='/'>Cancel</Link>
+        <div className='flexRow'>
+        <button className='formButton' type='submit'>Add Student</button>
+        <Link to='/students'><button className='formButton'>Cancel</button></Link>
+        </div>
       </form>
     )
   }

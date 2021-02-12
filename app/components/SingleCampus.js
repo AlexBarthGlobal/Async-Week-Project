@@ -8,11 +8,11 @@ const SingleCampus = (props) => {
     
     return(
         <div>
-            <div>
-        <Link to={`/campuses/${props.listId}`}><img src={props.imageUrl} alt="image"></img></Link>
+            <div className='centerThis'>
+        <Link to={`/campuses/${props.listId}`}><img src={props.imageUrl} alt="image" className="smallImage"></img></Link>
             </div>  
             <div>    
-        <Link to={`/campuses/${props.listId}`}>{props.name}</Link>
+        <div className="centerThis"><Link to={`/campuses/${props.listId}`}>{props.name}</Link></div>
             </div>    
         {/* <button className='delete' onClick={() => props.deleteCampus(props.listId)}>Delete</button> */}
         </div>    

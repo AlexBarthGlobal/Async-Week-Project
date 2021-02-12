@@ -23,29 +23,31 @@ export class SingleStudentView extends React.Component {
             //   var floatGPA = this.props.studentAndTheirCampus[0].gpa
             // }
             if (this.props.studentAndTheirCampus[0].campusInfo) { //This is checking if the student is enrolled to a campus
-              var renderSingleCampus = <SingleCampus key={this.props.studentAndTheirCampus[0].campusInfo[0].id} listId={this.props.studentAndTheirCampus[0].campusInfo[0].id} name={this.props.studentAndTheirCampus[0].campusInfo[0].campusName} imageUrl={this.props.studentAndTheirCampus[0].campusInfo[0].imageUrl} />
+              var renderSingleCampus = 
+              <div className='singleItem'>
+              <div className='centerThis marginBottom'>Currently Enrolled:</div>  
+              <SingleCampus key={this.props.studentAndTheirCampus[0].campusInfo[0].id} listId={this.props.studentAndTheirCampus[0].campusInfo[0].id} name={this.props.studentAndTheirCampus[0].campusInfo[0].campusName} imageUrl={this.props.studentAndTheirCampus[0].campusInfo[0].imageUrl} />
+              </div>
             } else {
-              var renderSingleCampus = <div>Not enrolled yet!</div>
+              var renderSingleCampus = <div className='marginBottom marginTop'>Student is not enrolled yet!</div>
             }
         }
 
         //Come back and add a CSS class to this image
         return this.props.studentAndTheirCampus ? (
-            <div>
-              <div>singleStudentView</div>
-              <div id={'singleStudentView'}>
-                <div>{this.props.studentAndTheirCampus[0].firstName} {this.props.studentAndTheirCampus[0].lastName}</div>
-                <img src={this.props.studentAndTheirCampus[0].imageUrl} alt="image"></img>
-                <div>{this.props.studentAndTheirCampus[0].email}</div>
-                <div>{this.props.studentAndTheirCampus[0].gpa}</div>
+            <div className='flex'>
+              <div className='centerThis'>
+                <div className='marginTop'>{this.props.studentAndTheirCampus[0].firstName} {this.props.studentAndTheirCampus[0].lastName}</div>
+                <img src={this.props.studentAndTheirCampus[0].imageUrl} alt="image" className='largeImage'></img>
+                <div className='marginBottom'>Email: {this.props.studentAndTheirCampus[0].email}</div>
+                <div className='marginBottom'>GPA: {this.props.studentAndTheirCampus[0].gpa}</div>
                 {/* {floatGPA} */}
-                <button><Link to={{pathname: `/students/edit/${this.props.studentAndTheirCampus[0].id}`, state:{prevUrl: location.pathname}}}>Edit Student</Link></button>
+                <button><Link to={{pathname: `/students/edit/${this.props.studentAndTheirCampus[0].id}`, state:{prevUrl: location.pathname}}} className=''>Edit Student</Link></button>
+              </div>
+              <div className='allItems'>
                 {renderSingleCampus}
-
-
-
-              </div> 
-            </div>    
+                </div>
+              </div>    
         )
         :
         ( 
