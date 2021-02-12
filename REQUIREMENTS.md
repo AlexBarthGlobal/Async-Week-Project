@@ -55,7 +55,7 @@ Congrats! You have completed your first vertical slice! Make sure to `commit -m 
 - [X] Clicking on a campus from the all-campuses view should navigate to show that campus in the single-campus view
 
 - Write a component to display a single student with the following information:
-  - [X FIX GPA FLOAT] The student's full name, email, image, and gpa
+  - [X] The student's full name, email, image, and gpa
   - [X] The name of their campus (or a helpful message if they don't have one)
 - [X] Display the appropriate student when the url matches `/students/:studentId`
 - [X] Clicking on a student from the all-students view should navigate to show that student in the single-student view
@@ -149,6 +149,8 @@ Congrats! You have completed your fourth vertical slice! Make sure to `commit -m
   - [X] Make an AJAX request that causes that student to be updated in the database
   - [X] Update the student in the current view without needing to refresh the page
 
+  **[ ] Fix refresh on edit campus/student page
+
 #### Backend
 
 - [X] Write a route to update an existing campus
@@ -177,7 +179,7 @@ Congrats! You have completed your fourth vertical slice! Make sure to `commit -m
 - [ ] If a user attempts to add a new student or campus without a required field, a helpful message should be displayed
 - [ ] If a user attempts to access a page that doesn't exist (ex. `/potato`), a helpful "not found" message should be displayed
 - [ ] If a user attempts to view a student/campus that doesn't exist, a helpful message should be displayed
-- [ ] Whenever a component needs to wait for data to load from the server, a "loading" message should be displayed until the data is available
+- [X] Whenever a component needs to wait for data to load from the server, a "loading" message should be displayed until the data is available
 - [ ] Overall, the app is spectacularly styled and visually stunning
 
 #### Ordering
