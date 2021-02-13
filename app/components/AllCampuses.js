@@ -22,7 +22,8 @@ export class AllCampuses extends React.Component {
     console.log(this.props.campuses)
     }
     
-    if (this.props.campuses) {
+    if (this.props.campuses) { 
+      if (this.props.campuses.length > 0) {
 
       return (
         <div>
@@ -40,8 +41,8 @@ export class AllCampuses extends React.Component {
           )}       
         </div>
         </div>
-      ) 
-    } else {
+      )
+    }} else {
       
       this.props.loadCampuses()
       
@@ -51,7 +52,14 @@ export class AllCampuses extends React.Component {
         <div>Loading</div>
         </div>   
       )
-    };
+    }
+    return ( 
+    <div className='centerThis marginTop'>
+    <div>All Campuses</div>
+    <Link to={`/addcampus`}><button>Add Campus</button></Link>
+    <div className='marginTop'>No campuses to display! Click Add Campus</div>
+    </div>
+    )
   }
 }
 

@@ -70,7 +70,7 @@ class AddStudent extends React.Component {
         <input name='gpa' onChange={handleChange} value={gpa} />
 
         <div className='flexRow'>
-        <button className='formButton' type='submit'>Add Student</button>
+        <button className='formButton' type='submit'>Submit</button>
         <Link to='/students'><button className='formButton'>Cancel</button></Link>
         </div>
       </form>

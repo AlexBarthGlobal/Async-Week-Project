@@ -22,6 +22,7 @@ export class AllStudents extends React.Component {
 
 
     if (this.props.students) { 
+      if (this.props.students.length > 0) {
 
       return ( 
         <div>
@@ -40,7 +41,7 @@ export class AllStudents extends React.Component {
         </div>
         </div>
       ) 
-        } else {  
+        }} else {  
 
       this.props.loadStudents()
 
@@ -50,6 +51,13 @@ export class AllStudents extends React.Component {
               </div>   
       )
     }
+    return ( 
+      <div className='centerThis marginTop'>
+      <div>All Students</div>
+      <Link to={`/addstudent`}><button>Add Student</button></Link>
+      <div className='marginTop'>No students to display! Click Add Student</div>
+      </div>
+      )
   };
 }
 
