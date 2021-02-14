@@ -14,10 +14,18 @@ export class SingleStudentView extends React.Component {
   };
     
   render () {
-    console.log('PROPS LOADED')
-    console.log(this.props)
-
-    if (this.props.studentAndTheirCampus) {
+    if (this.props.currStudentInfo && this.props.currCampus) {
+      if (this.props.currCampus.length) {
+        var renderSingleCampus = 
+        <div className='singleItem'>
+          <div className='centerThis marginBottom'>Currently Enrolled:</div>  
+          <SingleCampus key={this.props.currCampus[0].id} listId={this.props.currCampus[0].id} name={this.props.currCampus[0].campusName} imageUrl={this.props.currCampus[0].imageUrl} />
+        </div>
+      } else {
+        var renderSingleCampus = <div className='marginBottom marginTop'>Student is not enrolled yet!</div>
+      };
+    }
+    else if (this.props.studentAndTheirCampus) {
       if (this.props.studentAndTheirCampus[0].campusInfo) {
         var renderSingleCampus = 
         <div className='singleItem'>
@@ -28,7 +36,22 @@ export class SingleStudentView extends React.Component {
         var renderSingleCampus = <div className='marginBottom marginTop'>Student is not enrolled yet!</div>
       };
     };
-    return this.props.studentAndTheirCampus ? (
+
+    return this.props.currCampus && this.props.currStudentInfo ? (
+      <div className='flex'>
+        <div className='centerThis'>
+          <div className='marginTop'>{this.props.currStudentInfo[0].firstName} {this.props.currStudentInfo[0].lastName}</div>
+          <img src={this.props.currStudentInfo[0].imageUrl} alt="image" className='studentLargeImage'></img>
+          <div className='marginBottom'>Email: {this.props.currStudentInfo[0].email}</div>
+          <div className='marginBottom'>GPA: {this.props.currStudentInfo[0].gpa}</div>
+          <Link to={{pathname: `/students/edit/${this.props.currStudentInfo[0].id}`, state:{prevUrl: location.pathname}}} className=''><button>Edit Student</button></Link>
+        </div>
+        <div className='allItems'>
+          {renderSingleCampus}
+        </div>
+      </div>    
+    )
+    : this.props.studentAndTheirCampus ? (
       <div className='flex'>
         <div className='centerThis'>
           <div className='marginTop'>{this.props.studentAndTheirCampus[0].firstName} {this.props.studentAndTheirCampus[0].lastName}</div>
@@ -52,9 +75,13 @@ export class SingleStudentView extends React.Component {
   };
 };
 
-const mapState = (state) => {
+const mapState = (state, {match}) => {
+  const currStudentInfo = state.students.data ? state.students.data.filter(student => student.id == match.params.id*1) : null;
+  const currCampus = state.campuses.data ? state.campuses.data.filter(campus => campus.id == currStudentInfo[0].campusId) : null;
   return {
       studentAndTheirCampus: state.studentAndTheirCampus.data,
+      currStudentInfo,
+      currCampus
   };
 };
   

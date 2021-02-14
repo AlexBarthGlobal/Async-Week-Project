@@ -18,8 +18,6 @@ export class AllStudents extends React.Component {
   };
 
   render() {
-    console.log('PROPS ON ALL STUDENTS')
-    console.log(this.props)
     if (this.props.students) { 
       if (this.props.students.length > 0) {
         return ( 

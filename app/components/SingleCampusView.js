@@ -15,9 +15,6 @@ export class SingleCampusView extends React.Component {
   };
 
   render () {
-    console.log('PROPS LOADED')
-    console.log(this.props)
-
     if (this.props.currCampusInfo && this.props.currStudents) {
       if (this.props.currStudents.length) {
         var renderStudentsFromCampus =
@@ -55,7 +52,7 @@ export class SingleCampusView extends React.Component {
       };
     };
 
-    return this.props.currStudents ? (
+    return this.props.currStudents && this.props.currCampusInfo ? (
       <div className='flex'>
         <div className='centerThis'>
           <div className='marginTop'>{this.props.currCampusInfo[0].campusName}</div>
