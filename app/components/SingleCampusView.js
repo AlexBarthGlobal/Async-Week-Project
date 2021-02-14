@@ -6,26 +6,13 @@ import SingleStudent from './SingleStudent'
 import {unregisterStudentThunk} from '../redux/singleCampus'
 
 export class SingleCampusView extends React.Component {
-  constructor() {
-    super()
 
-  this.unregisterStudent = this.unregisterStudent.bind(this)
-  }
-   
   componentDidMount() {
-    // if (!this.props.students) {
     const {id} = this.props.match.params;
     this.props.loadCampusAndItsStudents(id);
-    // };
   };
 
-  async unregisterStudent(id) {
-    this.props.unregisterThisStudent(id)
-    this.forceUpdate()
-  }
-
   render () {
-    
     if (this.props.campusAndItsStudents) {
       if (this.props.itsStudents.length) {
         var renderStudentsFromCampus =
