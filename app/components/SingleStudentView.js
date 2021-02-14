@@ -7,25 +7,12 @@ import SingleCampus from './SingleCampus'
 export class SingleStudentView extends React.Component {
    
   componentDidMount() {
-    if (!this.props.campuses) { 
     const {id} = this.props.match.params;
     this.props.loadStudentAndTheirCampus(id);
-    };
   };
     
   render () {
-    if (this.props.currStudentInfo && this.props.currCampus) {
-      if (this.props.currCampus.length) {
-        var renderSingleCampus = 
-        <div className='singleItem'>
-          <div className='centerThis marginBottom'>Currently Enrolled:</div>  
-          <SingleCampus key={this.props.currCampus[0].id} listId={this.props.currCampus[0].id} name={this.props.currCampus[0].campusName} imageUrl={this.props.currCampus[0].imageUrl} />
-        </div>
-      } else {
-        var renderSingleCampus = <div className='marginBottom marginTop'>Student is not enrolled yet!</div>
-      };
-    }
-    else if (this.props.studentAndTheirCampus) {
+    if (this.props.studentAndTheirCampus) {
       if (this.props.studentAndTheirCampus[0].campusInfo) {
         var renderSingleCampus = 
         <div className='singleItem'>
@@ -37,7 +24,7 @@ export class SingleStudentView extends React.Component {
       };
     };
 
-    return this.props.currCampus && this.props.currStudentInfo ? (
+    return this.props.currStudentInfo ? (
       <div className='flex'>
         <div className='centerThis'>
           <div className='marginTop'>{this.props.currStudentInfo[0].firstName} {this.props.currStudentInfo[0].lastName}</div>

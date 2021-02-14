@@ -25,25 +25,8 @@ export class SingleCampusView extends React.Component {
   }
 
   render () {
-    if (this.props.currCampusInfo && this.props.currStudents) {
-      if (this.props.currStudents.length) {
-        var renderStudentsFromCampus =
-        <div className='allItems'>
-          {this.props.currStudents.map(student => 
-            <div key={student.id} className='singleItemOnSingleCampus'>
-              <SingleStudent key={student.id} listId={student.id} firstName={student.firstName} lastName={student.lastName} imageUrl={student.imageUrl} />
-              <div className='centerThis marginSmallTop'>GPA: {student.gpa}</div>
-              <div className='centerThis'>
-                <button onClick={() => this.unregisterStudent(student.id)}>Unregister</button>
-              </div>
-            </div>
-          )}
-        </div>
-      } else {
-        var renderStudentsFromCampus = <div className='allItems marginBottom marginTop'>No students enrolled here yet!</div>
-      }
-    } 
-    else if (this.props.campusAndItsStudents) {
+    
+    if (this.props.campusAndItsStudents) {
       if (this.props.itsStudents.length) {
         var renderStudentsFromCampus =
         <div className='allItems'>
@@ -62,7 +45,7 @@ export class SingleCampusView extends React.Component {
       };
     };
 
-    return this.props.currStudents && this.props.currCampusInfo ? (
+    return this.props.currCampusInfo ? (
       <div className='flex'>
         <div className='centerThis'>
           <div className='marginTop'>{this.props.currCampusInfo[0].campusName}</div>
