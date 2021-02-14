@@ -3,11 +3,6 @@ import { addStudentThunk } from '../redux/students';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 
-// const defaultState = {
-//   taskName: '',
-//   assignee: '',
-// }
-
 class AddStudent extends React.Component {
   constructor () {
     super()
@@ -18,23 +13,20 @@ class AddStudent extends React.Component {
       imageUrl: '',
       gpa: '',
     }; 
-
     this.handleChange = this.handleChange.bind(this)
     this.handleSubmit = this.handleSubmit.bind(this)
-  }
+  };
 
   handleChange (evt) {
-    //   console.log(this.state)
     this.setState({
       [evt.target.name]: evt.target.value
     })
-  }
+  };
 
   async handleSubmit (evt) {
     evt.preventDefault()
-    const student = {};
     this.props.addStudent({ ...this.state })
-  }
+  };
 
   render () {
     const { firstName, lastName, email, imageUrl, gpa } = this.state;
@@ -70,13 +62,13 @@ class AddStudent extends React.Component {
         <input name='gpa' onChange={handleChange} value={gpa} />
 
         <div className='flexRow'>
-        <button className='formButton' type='submit'>Submit</button>
-        <Link to='/students'><button className='formButton'>Cancel</button></Link>
+          <button className='formButton' type='submit'>Submit</button>
+          <Link to='/students'><button className='formButton'>Cancel</button></Link>
         </div>
       </form>
     )
-  }
-}
+  };
+};
 
 export default connect(()=> {
   return {};

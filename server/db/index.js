@@ -7,7 +7,6 @@ const Campus = require('./campus')
 
 Campus.hasMany(Student)
 Student.belongsTo(Campus)
-// Student.belongsTo(Campus)
 
 // This is a great place to establish associations between your models
 // (https://sequelize-guides.netlify.com/association-types/).

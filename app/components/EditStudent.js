@@ -3,11 +3,6 @@ import { editStudentThunk } from '../redux/students';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 
-// const defaultState = {
-//   taskName: '',
-//   assignee: '',
-// }
-
 class EditStudent extends React.Component {
   constructor () {
     super()
@@ -23,53 +18,39 @@ class EditStudent extends React.Component {
   }
 
   componentDidMount () {
-      if (this.props.student) {
-          console.log('PROPS ON COMPONENT DID MOUNT')
-          console.log(this.props)
-          this.setState({
-            firstName: this.props.student[0].firstName,
-            lastName: this.props.student[0].lastName,
-            email: this.props.student[0].email,
-            imageUrl: this.props.student[0].imageUrl,
-            gpa: this.props.student[0].gpa
-          })
-      } else if (this.props.altStudent) {
-        console.log('ALTERNATE STUDENT!')
-        console.log(this.props.altStudent)
-        this.setState({
-            firstName: this.props.altStudent.firstName,
-            lastName: this.props.altStudent.lastName,
-            email: this.props.altStudent.email,
-            imageUrl: this.props.altStudent.imageUrl,
-            gpa: this.props.altStudent.gpa
-        })    
-      }
-  }
-
+    if (this.props.student) {  
+      this.setState({
+        firstName: this.props.student[0].firstName,
+        lastName: this.props.student[0].lastName,
+        email: this.props.student[0].email,
+        imageUrl: this.props.student[0].imageUrl,
+        gpa: this.props.student[0].gpa
+      })
+    } else if (this.props.altStudent) {
+      this.setState({
+        firstName: this.props.altStudent.firstName,
+        lastName: this.props.altStudent.lastName,
+        email: this.props.altStudent.email,
+        imageUrl: this.props.altStudent.imageUrl,
+        gpa: this.props.altStudent.gpa
+      })    
+    };
+  };
 
   handleChange (evt) {
-    //   console.log(this.state)
     this.setState({
       [evt.target.name]: evt.target.value
-    })
-  }
+    });
+  };
 
   async handleSubmit (evt) {
     evt.preventDefault()
-    const student = {};
     this.props.editStudent({ data: { ...this.state }, prevUrl: this.props.location.state, studentId: this.props.match.params.id })
-  }
+  };
 
   render () {
-
-    if (this.props) {
-        console.log('EDIT STUDENT PROPS')
-        console.log(this.props)
-    }
-
     const { firstName, lastName, email, imageUrl, gpa } = this.state;
     const { handleSubmit, handleChange } = this;
-
     return (
       <form className='addEditForm' onSubmit={handleSubmit}>
 
@@ -101,35 +82,23 @@ class EditStudent extends React.Component {
         <input name='gpa' onChange={handleChange} value={gpa} />
 
         <div className='flexRow'>
-        <button className='formButton' type='submit'>Submit Changes</button>
-        <Link to='/'><button className='formButton'>Cancel</button></Link>
+          <button className='formButton' type='submit'>Submit Changes</button>
+          <Link to={`/students/${this.props.match.params.id}`}><button className='formButton'>Cancel</button></Link>
         </div>
       </form>
     )
-  }
-}
-
-// const mapState = (state) => {
-//     return {
-//         campusInfo: state.campuses.data,
-//         campusAndItsStudents: state.campusAndItsStudents   
-//     }
-// }
+  };
+};
 
 export default connect(({students, studentAndTheirCampus}, { match })=> {
-    console.log('FROM THE CONNECT')
-    if ({students}.students.data) {
+  if ({students}.students.data) {
     var student = {students}.students.data.filter(student => student.id == match.params.id*1);
     } else if ({studentAndTheirCampus}) {
-        // console.log("CAMPUS AND ITS STUDENTS")
-        // console.log(campusAndItsStudents.data[0])
-        if (studentAndTheirCampus.data) {
+      if (studentAndTheirCampus.data) {
         const altStudent = studentAndTheirCampus.data[0]
         return {altStudent}
-        }
+      }
     }
-    console.log('AFTER MAP')
-    console.log(student)
     student = student || {};
     return {
       student

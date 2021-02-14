@@ -9,56 +9,49 @@ export class AllCampuses extends React.Component {
 
   componentDidMount() {
     if (!this.props.campuses) {
-    this.props.loadCampuses();
-    }
-  }
+      this.props.loadCampuses();
+    };
+  };
 
-  render() {
-    if (this.props.campuses) {
-    console.log('AllCampuses In Props')
-    console.log(this.props.campuses)
-    }
-    
+  render() {    
     if (this.props.campuses) { 
       if (this.props.campuses.length > 0) {
-
-      return (
-        <div>
-        <div className='centerThis marginTop'>
+        return (
+          <div>
+            <div className='centerThis marginTop'>
+              <div>All Campuses</div>
+              <Link to={`/addcampus`}><button>Add Campus</button></Link>
+            </div>
+            <div className="allItems">{this.props.campuses.map(campus =>
+              <div key={campus.id} className="singleItem">
+                <SingleCampus listId={campus.id} name={campus.campusName} imageUrl={campus.imageUrl} />
+                <div className='centerThis'>
+                  <button onClick={() => this.props.deleteCampus(campus.id)}>Delete</button>
+                </div>
+              </div>
+              )}       
+            </div>
+          </div>
+        )
+      }
+    } else {
+        this.props.loadCampuses()
+        return (
+          <div>
+            <div>All Campuses</div>
+            <div>Loading</div>
+          </div>   
+        )
+      }
+    return ( 
+      <div className='centerThis marginTop'>
         <div>All Campuses</div>
         <Link to={`/addcampus`}><button>Add Campus</button></Link>
-        </div>
-        <div className="allItems">{this.props.campuses.map(campus =>
-        <div key={campus.id} className="singleItem">
-          <SingleCampus listId={campus.id} name={campus.campusName} imageUrl={campus.imageUrl} />
-          <div className='centerThis'>
-          <button onClick={() => this.props.deleteCampus(campus.id)}>Delete</button>
-          </div>
-        </div>
-          )}       
-        </div>
-        </div>
-      )
-    }} else {
-      
-      this.props.loadCampuses()
-      
-      return (
-        <div>
-        <div>All Campuses</div>
-        <div>Loading</div>
-        </div>   
-      )
-    }
-    return ( 
-    <div className='centerThis marginTop'>
-    <div>All Campuses</div>
-    <Link to={`/addcampus`}><button>Add Campus</button></Link>
-    <div className='marginTop'>No campuses to display! Click Add Campus</div>
-    </div>
+        <div className='marginTop'>No campuses to display! Click Add Campus</div>
+      </div>
     )
-  }
-}
+  };
+};
 
 const mapState = (state) => {
   return {

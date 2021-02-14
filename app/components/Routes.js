@@ -1,11 +1,8 @@
 import React from "react";
 import { BrowserRouter as Router, Route, NavLink, Switch } from "react-router-dom";
-
 import HomePage from './HomePage'
 import AllCampuses from './AllCampuses'
 import AllStudents from './AllStudents'
-// import SingleCampus from './SingleCampus'  //I never actually link here, these are just
-// import SingleStudent from './SingleStudent' //smaller components
 import SingleCampusView from './SingleCampusView'
 import SingleStudentView from './SingleStudentView'
 import AddCampus from './AddCampus'
@@ -42,4 +39,4 @@ const Routes = () => {
   );
 };
 
-export default Routes;
+export default Routes

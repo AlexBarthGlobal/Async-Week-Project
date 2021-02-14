@@ -6,21 +6,21 @@ export const unregisterStudent = (unregisteredStudent) => {
     return {
         type: UNREGISTER_STUDENT,
         unregisteredStudent
-    }
-}
+    };
+};
 
 export const unregisterStudentThunk = (id) => {
     return async (dispatch) => {
         try {
             const unregisteredStudent = await axios.put(`/api/students/unregister/${id}`)
-            console.log('THIS IS THE STUDENT UNREGISTERED')
-            console.log(unregisteredStudent)
             dispatch(unregisterStudent(unregisteredStudent))
         } catch (err) {
             console.log(err)
         }
-    }
+    };
 };
+
+///
 
 const SET_CAMPUS_AND_ITS_STUDENTS = 'SET_CAMPUS_AND_ITS_STUDENTS'
 
@@ -28,8 +28,8 @@ export const setCampusAndItsStudents = (campusAndItsStudents) => {
     return {
         type: SET_CAMPUS_AND_ITS_STUDENTS,
         campusAndItsStudents
-    }
-}
+    };
+};
 
 export const fetchCampusAndItsStudents = (id) => {
     return async (dispatch) => {
@@ -39,8 +39,10 @@ export const fetchCampusAndItsStudents = (id) => {
         } catch (err) {
             console.log(err)
         }
-    }
+    };
 };
+
+///
 
 const initialState = {};
 
@@ -57,5 +59,5 @@ export default function singleCampusReducer(state = initialState, action) {
             return prevState
         default:
             return state
-    }
-}
+    };
+};

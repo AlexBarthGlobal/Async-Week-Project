@@ -23,7 +23,7 @@ router.get('/:id', async (req, res, next) => {
                 required: false,
                 where: {
                     campusId: id
-                }             
+                }
             }
         })
         res.json(campusAndItsStudents)
@@ -69,4 +69,4 @@ router.use((req, res) => {
 router.use((err, req, res, next) => {
     console.error(err.stack);
     res.status(500).send('500 error')
-  })
+})
