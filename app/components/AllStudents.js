@@ -4,16 +4,22 @@ import {fetchStudents} from '../redux/students'
 import SingleStudent from './SingleStudent'
 import { Link } from 'react-router-dom'
 import { deleteStudentThunk } from '../redux/students'
+import {fetchCampuses} from '../redux/campuses'
 
 export class AllStudents extends React.Component {
 
   componentDidMount() {
     if (!this.props.students) {
-      this.props.loadStudents();
+      this.props.loadStudents()
+    };
+    if (!this.props.campuses) {
+      this.props.loadCampuses()
     };
   };
 
   render() {
+    console.log('PROPS ON ALL STUDENTS')
+    console.log(this.props)
     if (this.props.students) { 
       if (this.props.students.length > 0) {
         return ( 
@@ -34,8 +40,7 @@ export class AllStudents extends React.Component {
           </div>
         ) 
       }
-    } else {  
-      this.props.loadStudents()
+    } else {
         return (
         <div>
           <div>All Students</div>
@@ -55,14 +60,16 @@ export class AllStudents extends React.Component {
 
 const mapState = (state) => {
   return {
-    students: state.students.data
+    students: state.students.data,
+    campuses: state.campuses.data,
   };
 };
 
 const mapDispatch = (dispatch) => {
   return {
     loadStudents: () => dispatch(fetchStudents()),
-    deleteStudent: (student) => dispatch(deleteStudentThunk(student))
+    deleteStudent: (student) => dispatch(deleteStudentThunk(student)),
+    loadCampuses: () => dispatch(fetchCampuses()),
   };
 };
 

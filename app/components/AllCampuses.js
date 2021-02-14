@@ -4,16 +4,20 @@ import {fetchCampuses} from '../redux/campuses'
 import SingleCampus from './SingleCampus'
 import { Link } from 'react-router-dom'
 import { deleteCampusThunk } from '../redux/campuses'
+import {fetchStudents} from '../redux/students'
 
 export class AllCampuses extends React.Component {
 
   componentDidMount() {
     if (!this.props.campuses) {
-      this.props.loadCampuses();
+      this.props.loadCampuses()
     };
+    if (!this.props.students) {
+      this.props.loadStudents()
+    }
   };
 
-  render() {    
+  render() {
     if (this.props.campuses) { 
       if (this.props.campuses.length > 0) {
         return (
@@ -35,7 +39,6 @@ export class AllCampuses extends React.Component {
         )
       }
     } else {
-        this.props.loadCampuses()
         return (
           <div>
             <div>All Campuses</div>
@@ -55,14 +58,16 @@ export class AllCampuses extends React.Component {
 
 const mapState = (state) => {
   return {
-    campuses: state.campuses.data
+    campuses: state.campuses.data,
+    students: state.students.data
   };
 };
 
 const mapDispatch = (dispatch) => {
   return {
     loadCampuses: () => dispatch(fetchCampuses()),
-    deleteCampus: (campus) => dispatch(deleteCampusThunk(campus))
+    deleteCampus: (campus) => dispatch(deleteCampusThunk(campus)),
+    loadStudents: () => dispatch(fetchStudents())
   };
 };
 

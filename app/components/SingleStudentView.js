@@ -7,11 +7,16 @@ import SingleCampus from './SingleCampus'
 export class SingleStudentView extends React.Component {
    
   componentDidMount() {
+    if (!this.props.campuses) { 
     const {id} = this.props.match.params;
     this.props.loadStudentAndTheirCampus(id);
-  }
+    };
+  };
     
   render () {
+    console.log('PROPS LOADED')
+    console.log(this.props)
+
     if (this.props.studentAndTheirCampus) {
       if (this.props.studentAndTheirCampus[0].campusInfo) {
         var renderSingleCampus = 
@@ -49,13 +54,13 @@ export class SingleStudentView extends React.Component {
 
 const mapState = (state) => {
   return {
-      studentAndTheirCampus: state.studentAndTheirCampus.data
+      studentAndTheirCampus: state.studentAndTheirCampus.data,
   };
 };
   
 const mapDispatch = (dispatch) => {
   return {
-    loadStudentAndTheirCampus: (id) => dispatch(fetchStudentAndTheirCampus(id))
+    loadStudentAndTheirCampus: (id) => dispatch(fetchStudentAndTheirCampus(id)),
   };
 };
 

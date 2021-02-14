@@ -35,6 +35,8 @@ export const fetchCampusAndItsStudents = (id) => {
     return async (dispatch) => {
         try {
             const returnedCampusAndItsStudents = await axios.get(`/api/campuses/${id}`)
+            console.log('RETURNED FROM FETCH')
+            console.log(returnedCampusAndItsStudents)
             dispatch(setCampusAndItsStudents(returnedCampusAndItsStudents))
         } catch (err) {
             console.log(err)

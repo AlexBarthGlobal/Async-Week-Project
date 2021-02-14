@@ -150,6 +150,10 @@ Congrats! You have completed your fourth vertical slice! Make sure to `commit -m
 - [X] Write a route to update an existing campus
 - [X] Write a route to update an existing student
 
+// Add a way to register students to campuses
+// Fix the refresh bug on edit student/campus
+// Record the video
+
 </details>
 
 ### Bonus Tier: Finishing Touches (15 EC)
@@ -171,7 +175,7 @@ Congrats! You have completed your fourth vertical slice! Make sure to `commit -m
 #### Finishing Touches
 
 - [ ] If a user attempts to add a new student or campus without a required field, a helpful message should be displayed
-- [ ] If a user attempts to access a page that doesn't exist (ex. `/potato`), a helpful "not found" message should be displayed
+- [X] If a user attempts to access a page that doesn't exist (ex. `/potato`), a helpful "not found" message should be displayed
 - [ ] If a user attempts to view a student/campus that doesn't exist, a helpful message should be displayed
 - [X] Whenever a component needs to wait for data to load from the server, a "loading" message should be displayed until the data is available
 - [X] Overall, the app is spectacularly styled and visually stunning

@@ -99,9 +99,8 @@ export default function campusesReducer(state = initialState, action) {
     case ADD_CAMPUS:
       return [...state, action.campus]
     case DELETE_CAMPUS:
-      console.log("THIS IS THE STATE")
-      console.log(state)
-      return state.data.filter(campus => campus.id !== action.campus)
+      const deletedCampusReturn = state.data.filter(campus => campus.id !== action.campus)
+      return {...state, data: deletedCampusReturn}
     case EDIT_CAMPUS:
       return state.map(campus => campus.id === action.campus.id ? action.campus : campus);
     default:

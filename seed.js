@@ -3,81 +3,17 @@ const { db } = require("./server/db");
 
 const {Student, Campus} = require('./server/db')
 
-const students = [{
-  firstName: 'Joe',
-  lastName: 'Owens',
-  email: 'joeowens@email.com',
-  imageUrl: 'https://pbs.twimg.com/media/BtFUrp6CEAEmsml.jpg',
-  gpa: 4.0
-},
-{
-  firstName: 'Dan',
-  lastName: 'Johnson',
-  email: 'danjohnson@email.com',
-  imageUrl: 'https://pbs.twimg.com/media/BtFUrp6CEAEmsml.jpg',
-  gpa: 3.2
-},
-{
-  firstName: 'Rick',
-  lastName: 'Duun',
-  email: 'rickduun@email.com',
-  imageUrl: 'https://pbs.twimg.com/media/BtFUrp6CEAEmsml.jpg',
-  gpa: 3.4
-},
-{
-  firstName: 'Jack',
-  lastName: 'Thompson',
-  email: 'jackthompson@email.com',
-  imageUrl: 'https://pbs.twimg.com/media/BtFUrp6CEAEmsml.jpg',
-  gpa: 3.8,
-},
-{
-  firstName: 'Thomas',
-  lastName: 'Bonds',
-  email: 'thomasbonds@email.com',
-  imageUrl: 'https://pbs.twimg.com/media/BtFUrp6CEAEmsml.jpg',
-  gpa: 3.7,
-},
-];
-
-const campuses = [{
-  campusName: 'Harvard University',
-  address: 'Cambridge, MA',
-  imageUrl: 'https://i0.wp.com/foreverlostintravel.com/wp-content/uploads/2020/02/Harvard-buildings.jpg?fit=688%2C516&ssl=1',
-  description: 'You will come here and study every day. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.'
-},
-{
-  campusName: 'UCLA',
-  address: 'Los Angeles, CA',
-  imageUrl: 'https://s3.amazonaws.com/cms.ipressroom.com/173/files/20198/5d72b4772cfac209ff04c634_Royce+Quad/Royce+Quad_hero.jpg',
-  description: 'This place rocks! Party school! Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.'
-},
-{
-  campusName: 'Duke University',
-  address: 'Cambridge, MA',
-  imageUrl: 'https://frontiersinblog.files.wordpress.com/2020/02/26628043971_c8c3a4a770_k.jpg',
-  description: `Let's win some basketball tournaments. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.`
-},
-{
-  campusName: 'Yale University',
-  address: 'New Haven, CT',
-  imageUrl: 'https://i2.wp.com/www.opindia.com/wp-content/uploads/2020/08/shutterstock_517879ae.jpg?fit=1000%2C563&ssl=1',
-  description: `Let's study some business. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.`
-},
-];
-
 const seed = async () => {
   try {
     await db.sync({ force: true });
     
-    // await Promise.all(students.map(student => {
-    //   return Student.create(student);
-    // }));
-
-    // await Promise.all(campuses.map(campus => {
-    //   return Campus.create(campus);
-    // }));
-
+    const Harvard = await Campus.create({
+      campusName: 'Harvard University',
+      address: 'Cambridge, MA',
+      imageUrl: 'https://i0.wp.com/foreverlostintravel.com/wp-content/uploads/2020/02/Harvard-buildings.jpg?fit=688%2C516&ssl=1',
+      description: 'You will come here and study every day. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.'
+    })
+    
     const Joe = await Student.create({
       firstName: 'Joe',
       lastName: 'Owens',
@@ -85,24 +21,46 @@ const seed = async () => {
       imageUrl: 'https://pbs.twimg.com/media/BtFUrp6CEAEmsml.jpg',
       gpa: 4.0
     })
-
-    const Harvard = await Campus.create({
-      campusName: 'Harvard University',
-      address: 'Cambridge, MA',
-      imageUrl: 'https://i0.wp.com/foreverlostintravel.com/wp-content/uploads/2020/02/Harvard-buildings.jpg?fit=688%2C516&ssl=1',
-      description: 'You will come here and study every day. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.'
-    })
-
     await Joe.setCampus(Harvard)
 
-    const Dan = await Student.create({
-      firstName: 'Dan',
-      lastName: 'Johnson',
-      email: 'danjohnson@email.com',
+    const Jason = await Student.create({
+      firstName: 'Jason',
+      lastName: 'Richards',
+      email: 'jasonrichards@email.com',
       imageUrl: 'https://pbs.twimg.com/media/BtFUrp6CEAEmsml.jpg',
-      gpa: 3.2
-      })
+      gpa: 3.8
+    })
+    await Jason.setCampus(Harvard)
 
+    const Barry = await Student.create({
+      firstName: 'Barry',
+      lastName: 'Harolds',
+      email: 'barryharolds@gmail.com',
+      imageUrl: 'https://pbs.twimg.com/media/BtFUrp6CEAEmsml.jpg',
+      gpa: 3.9
+    })
+    await Barry.setCampus(Harvard)
+
+    const Kim = await Student.create({
+      firstName: 'Kim',
+      lastName: 'Kazia',
+      email: 'kimkazia@gmail.com',
+      imageUrl: 'https://pbs.twimg.com/media/BtFUrp6CEAEmsml.jpg',
+      gpa: 3.8
+    })
+    await Kim.setCampus(Harvard)
+
+    const Tom = await Student.create({
+      firstName: 'Tom',
+      lastName: 'Pizzaro',
+      email: 'tompizzaro@gmail.com',
+      imageUrl: 'https://pbs.twimg.com/media/BtFUrp6CEAEmsml.jpg',
+      gpa: 3.9
+    })
+    await Tom.setCampus(Harvard)
+
+    ///
+    
     const UCLA = await Campus.create({
       campusName: 'UCLA',
       address: 'Los Angeles, CA',
@@ -110,15 +68,52 @@ const seed = async () => {
       description: 'This place rocks! Party school! Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.'
     })
 
+    const Dan = await Student.create({
+      firstName: 'Dan',
+      lastName: 'Johnson',
+      email: 'danjohnson@email.com',
+      imageUrl: 'https://pbs.twimg.com/media/BtFUrp6CEAEmsml.jpg',
+      gpa: 3.2
+    })
     await Dan.setCampus(UCLA)
 
-    const Rick = await Student.create({
-      firstName: 'Rick',
-      lastName: 'Duun',
-      email: 'rickduun@email.com',
+    const Jack = await Student.create({
+      firstName: 'Jack',
+      lastName: 'Thompson',
+      email: 'jackthompson@email.com',
       imageUrl: 'https://pbs.twimg.com/media/BtFUrp6CEAEmsml.jpg',
-      gpa: 3.4
-    },)
+      gpa: 3.7,
+    })
+    await Jack.setCampus(UCLA)
+    
+    const Filip = await Student.create({
+      firstName: 'Filip',
+      lastName: 'Leonardo',
+      email: 'filipleonardo@email.com',
+      imageUrl: 'https://pbs.twimg.com/media/BtFUrp6CEAEmsml.jpg',
+      gpa: 3.8,
+    })
+    await Filip.setCampus(UCLA)
+
+    const Suzanne = await Student.create({
+      firstName: 'Suzanne',
+      lastName: 'Crawford',
+      email: 'suzannecrawford@email.com',
+      imageUrl: 'https://pbs.twimg.com/media/BtFUrp6CEAEmsml.jpg',
+      gpa: 3.8,
+    })
+    await Suzanne.setCampus(UCLA)
+
+    const Stephanie = await Student.create({
+      firstName: 'Stephanie',
+      lastName: 'Bilal',
+      email: 'stephanieanton@email.com',
+      imageUrl: 'https://pbs.twimg.com/media/BtFUrp6CEAEmsml.jpg',
+      gpa: 3.9,
+    })
+    await Stephanie.setCampus(UCLA)
+
+    ///
 
     const Duke = await Campus.create({
       campusName: 'Duke University',
@@ -127,16 +122,23 @@ const seed = async () => {
       description: `Let's win some basketball tournaments. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.`
     })
 
+    const Rick = await Student.create({
+      firstName: 'Rick',
+      lastName: 'Duun',
+      email: 'rickduun@email.com',
+      imageUrl: 'https://pbs.twimg.com/media/BtFUrp6CEAEmsml.jpg',
+      gpa: 3.4
+    })
     await Rick.setCampus(Duke)
 
-    const Jack = await Student.create({
-      firstName: 'Jack',
-      lastName: 'Thompson',
-      email: 'jackthompson@email.com',
+    const Jody = await Student.create({
+      firstName: 'Jody',
+      lastName: 'Riin',
+      email: 'jodyriin@email.com',
       imageUrl: 'https://pbs.twimg.com/media/BtFUrp6CEAEmsml.jpg',
       gpa: 3.8,
     })
-    await Jack.setCampus(Duke)
+    await Jody.setCampus(Duke)
     
     const Thomas = await Student.create({
       firstName: 'Thomas',
@@ -145,75 +147,27 @@ const seed = async () => {
       imageUrl: 'https://pbs.twimg.com/media/BtFUrp6CEAEmsml.jpg',
       gpa: 3.7,
     })
+    await Thomas.setCampus(Duke)    
 
-    /////// TESTING REMOVE CAMPUS ///////
+    const Theo = await Student.create({
+      firstName: 'Theo',
+      lastName: 'Clements',
+      email: 'theoclements@email.com',
+      imageUrl: 'https://pbs.twimg.com/media/BtFUrp6CEAEmsml.jpg',
+      gpa: 3.7,
+    })
+    await Theo.setCampus(Duke)
 
-    // await Student.update(
-    //   {campusId: null},
-    //   {where: {
-    //     id: 2
-    //   }}
-    // )
-
-    ////////////////// TESTING DUKE SINGLE CAMPUS VIEW //////////
-
-    const Jac = await Student.create({
-      firstName: 'Jack',
-      lastName: 'Thompson',
+    const Ramon = await Student.create({
+      firstName: 'Ramon',
+      lastName: 'Salazar',
       email: 'jackthompson@email.com',
       imageUrl: 'https://pbs.twimg.com/media/BtFUrp6CEAEmsml.jpg',
       gpa: 3.8,
     })
-    await Jac.setCampus(UCLA)
+    await Jack.setCampus(Duke)
 
-    const Ja = await Student.create({
-      firstName: 'Jack',
-      lastName: 'Thompson',
-      email: 'jackthompson@email.com',
-      imageUrl: 'https://pbs.twimg.com/media/BtFUrp6CEAEmsml.jpg',
-      gpa: 3.8,
-    })
-    await Ja.setCampus(Duke)
-
-    const J = await Student.create({
-      firstName: 'Jack',
-      lastName: 'Thompson',
-      email: 'jackthompson@email.com',
-      imageUrl: 'https://pbs.twimg.com/media/BtFUrp6CEAEmsml.jpg',
-      gpa: 3.8,
-    })
-    await J.setCampus(Duke)
-
-    const A = await Student.create({
-      firstName: 'Jack',
-      lastName: 'Thompson',
-      email: 'jackthompson@email.com',
-      imageUrl: 'https://pbs.twimg.com/media/BtFUrp6CEAEmsml.jpg',
-      gpa: 3.8,
-    })
-    await A.setCampus(Duke)
-
-    const B = await Student.create({
-      firstName: 'Jack',
-      lastName: 'Thompson',
-      email: 'jackthompson@email.com',
-      imageUrl: 'https://pbs.twimg.com/media/BtFUrp6CEAEmsml.jpg',
-      gpa: 3.8,
-    })
-    await B.setCampus(Duke)
-
-    const JD = await Student.create({
-      firstName: 'Jack',
-      lastName: 'Thompson',
-      email: 'jackthompson@email.com',
-      imageUrl: 'https://pbs.twimg.com/media/BtFUrp6CEAEmsml.jpg',
-      gpa: 3.8,
-    })
-    await JD.setCampus(Duke)
-
-
-
-    /////////////////////////////////////////////
+    ///
 
     const Yale = await Campus.create({
       campusName: 'Yale University',
@@ -222,24 +176,93 @@ const seed = async () => {
       description: `Let's study some business. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.`
     })
 
-    // const Joey = await Student.create({
-    //   firstName: 'Joey',
-    //   lastName: 'Richards',
-    //   email: 'joeyrichards@email.com',
-    //   imageUrl: 'https://pbs.twimg.com/media/BtFUrp6CEAEmsml.jpg',
-    //   gpa: 3.3
-    // })
+    const Avery = await Student.create({
+      firstName: 'Avery',
+      lastName: 'Lee',
+      email: 'averylee@email.com',
+      imageUrl: 'https://pbs.twimg.com/media/BtFUrp6CEAEmsml.jpg',
+      gpa: 3.9,
+    })
+    await Avery.setCampus(Yale)
 
-    // await Joey.setCampus(Yale)
+    const Andrew = await Student.create({
+      firstName: 'Andrew',
+      lastName: 'Edwards',
+      email: 'andrewedwards@email.com',
+      imageUrl: 'https://pbs.twimg.com/media/BtFUrp6CEAEmsml.jpg',
+      gpa: 3.8,
+    })
+    await Andrew.setCampus(Yale)
 
+    const Terrance = await Student.create({
+      firstName: 'Terrance',
+      lastName: 'Bolton',
+      email: 'terrancebolton@email.com',
+      imageUrl: 'https://pbs.twimg.com/media/BtFUrp6CEAEmsml.jpg',
+      gpa: 4.0,
+    })
+    await Terrance.setCampus(Yale)
 
+    const Juliette = await Student.create({
+      firstName: 'Juliette',
+      lastName: 'Watkins',
+      email: 'juliettewatkins@email.com',
+      imageUrl: 'https://pbs.twimg.com/media/BtFUrp6CEAEmsml.jpg',
+      gpa: 4.0,
+    })
+    await Juliette.setCampus(Yale)
+
+    const Ailya = await Student.create({
+      firstName: 'Ailya',
+      lastName: 'Clayton',
+      email: 'ailyaclayton@email.com',
+      imageUrl: 'https://pbs.twimg.com/media/BtFUrp6CEAEmsml.jpg',
+      gpa: 3.9,
+    })
+    await Ailya.setCampus(Yale)
+
+    ///
+
+    const Wyatt = await Student.create({
+      firstName: 'Wyatt',
+      lastName: 'Li',
+      email: 'wyattli@email.com',
+      imageUrl: 'https://pbs.twimg.com/media/BtFUrp6CEAEmsml.jpg',
+      gpa: 4.0,
+    })
+
+    const Sahib = await Student.create({
+      firstName: 'Sahib',
+      lastName: 'Emery',
+      email: 'sahibemery@email.com',
+      imageUrl: 'https://pbs.twimg.com/media/BtFUrp6CEAEmsml.jpg',
+      gpa: 3.9,
+    })
     
+    const Katie = await Student.create({
+      firstName: 'Katie',
+      lastName: 'Nunez',
+      email: 'katienunez@email.com',
+      imageUrl: 'https://pbs.twimg.com/media/BtFUrp6CEAEmsml.jpg',
+      gpa: 3.8,
+    })
 
+    const Nour = await Student.create({
+      firstName: 'Nour',
+      lastName: 'Rutledge',
+      email: 'nourrutledge@email.com',
+      imageUrl: 'https://pbs.twimg.com/media/BtFUrp6CEAEmsml.jpg',
+      gpa: 3.9,
+    })
 
-    
+    const Gene = await Student.create({
+      firstName: 'Gene',
+      lastName: 'Ryan',
+      email: 'generyan@email.com',
+      imageUrl: 'https://pbs.twimg.com/media/BtFUrp6CEAEmsml.jpg',
+      gpa: 3.7,
+    })
 
-    
-    // seed your database here!
   } catch (err) {
     console.log(red(err));
   }
