@@ -51,12 +51,16 @@ export default function singleCampusReducer(state = initialState, action) {
         case SET_CAMPUS_AND_ITS_STUDENTS:
             return action.campusAndItsStudents
         case UNREGISTER_STUDENT:
+            console.log('PREVIOUS STATE')
+            console.log(state)
+            if (state) {
             const prevState = {...state}
             const newStudents = prevState.data[0].students.filter(student => 
                 student.id !== action.unregisteredStudent.data.id 
             )
             prevState.data[0].students = newStudents
             return prevState
+            } else return state;
         default:
             return state
     };

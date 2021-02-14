@@ -76,8 +76,11 @@ export class SingleStudentView extends React.Component {
 };
 
 const mapState = (state, {match}) => {
+  console.log(state)
   const currStudentInfo = state.students.data ? state.students.data.filter(student => student.id == match.params.id*1) : null;
-  const currCampus = state.campuses.data ? state.campuses.data.filter(campus => campus.id == currStudentInfo[0].campusId) : null;
+  if (currStudentInfo) {
+  var currCampus = state.campuses.data ? state.campuses.data.filter(campus => campus.id == currStudentInfo[0].campusId) : null;
+  };
   return {
       studentAndTheirCampus: state.studentAndTheirCampus.data,
       currStudentInfo,

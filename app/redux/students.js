@@ -1,5 +1,27 @@
 import axios from 'axios'
 
+const UNREGISTER_STUDENT = 'UNREGISTER_STUDENT'
+
+export const unregisterStudent = (unregisteredStudent) => {
+    return {
+        type: UNREGISTER_STUDENT,
+        unregisteredStudent
+    };
+};
+
+export const unregisterStudentThunk = (id) => {
+    return async (dispatch) => {
+        try {
+            const unregisteredStudent = await axios.put(`/api/students/unregister/${id}`)
+            dispatch(unregisterStudent(unregisteredStudent))
+        } catch (err) {
+            console.log(err)
+        }
+    };
+};
+
+///
+
 const EDIT_STUDENT = 'EDIT_STUDENT'
 
 export const editStudent = (student) => {

@@ -151,7 +151,6 @@ Congrats! You have completed your fourth vertical slice! Make sure to `commit -m
 - [X] Write a route to update an existing student
 
 // Add a way to register students to campuses
-// Fix the refresh bug on edit student/campus
 // Record the video
 
 </details>

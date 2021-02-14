@@ -18,19 +18,19 @@ class EditCampus extends React.Component {
 
   componentDidMount () {
     if (this.props.campus) {
-      this.setState({
-        campusName: this.props.campus[0].campusName,
-        address: this.props.campus[0].address,
-        imageUrl: this.props.campus[0].imageUrl,
-        description: this.props.campus[0].description
-      })
+        this.setState({
+          campusName: this.props.campus[0].campusName,
+          address: this.props.campus[0].address,
+          imageUrl: this.props.campus[0].imageUrl,
+          description: this.props.campus[0].description
+        })
     } else if (this.props.altCampus) {
-      this.setState({
-        campusName: this.props.altCampus.campusName,
-        address: this.props.altCampus.address,
-        imageUrl: this.props.altCampus.imageUrl,
-        description: this.props.altCampus.description
-      })
+        this.setState({
+          campusName: this.props.altCampus.campusName,
+          address: this.props.altCampus.address,
+          imageUrl: this.props.altCampus.imageUrl,
+         description: this.props.altCampus.description
+       })
     };
   };
 

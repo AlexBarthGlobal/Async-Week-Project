@@ -18,22 +18,22 @@ class EditStudent extends React.Component {
   }
 
   componentDidMount () {
-    if (this.props.student) {  
-      this.setState({
-        firstName: this.props.student[0].firstName,
-        lastName: this.props.student[0].lastName,
-        email: this.props.student[0].email,
-        imageUrl: this.props.student[0].imageUrl,
-        gpa: this.props.student[0].gpa
-      })
+    if (this.props.student) {
+        this.setState({
+          firstName: this.props.student[0].firstName,
+          lastName: this.props.student[0].lastName,
+          email: this.props.student[0].email,
+          imageUrl: this.props.student[0].imageUrl,
+          gpa: this.props.student[0].gpa
+        })
     } else if (this.props.altStudent) {
-      this.setState({
-        firstName: this.props.altStudent.firstName,
-        lastName: this.props.altStudent.lastName,
-        email: this.props.altStudent.email,
-        imageUrl: this.props.altStudent.imageUrl,
-        gpa: this.props.altStudent.gpa
-      })    
+        this.setState({
+          firstName: this.props.altStudent.firstName,
+          lastName: this.props.altStudent.lastName,
+          email: this.props.altStudent.email,
+          imageUrl: this.props.altStudent.imageUrl,
+          gpa: this.props.altStudent.gpa
+       })
     };
   };
 
@@ -49,6 +49,7 @@ class EditStudent extends React.Component {
   };
 
   render () {
+    console.log('RENDERING')
     const { firstName, lastName, email, imageUrl, gpa } = this.state;
     const { handleSubmit, handleChange } = this;
     return (

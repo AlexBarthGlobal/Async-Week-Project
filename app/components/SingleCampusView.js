@@ -6,13 +6,23 @@ import SingleStudent from './SingleStudent'
 import {unregisterStudentThunk} from '../redux/singleCampus'
 
 export class SingleCampusView extends React.Component {
+  constructor() {
+    super()
+
+  this.unregisterStudent = this.unregisterStudent.bind(this)
+  }
    
   componentDidMount() {
-    if (!this.props.students) {
+    // if (!this.props.students) {
     const {id} = this.props.match.params;
     this.props.loadCampusAndItsStudents(id);
-    };
+    // };
   };
+
+  async unregisterStudent(id) {
+    this.props.unregisterThisStudent(id)
+    this.forceUpdate()
+  }
 
   render () {
     if (this.props.currCampusInfo && this.props.currStudents) {
@@ -24,7 +34,7 @@ export class SingleCampusView extends React.Component {
               <SingleStudent key={student.id} listId={student.id} firstName={student.firstName} lastName={student.lastName} imageUrl={student.imageUrl} />
               <div className='centerThis marginSmallTop'>GPA: {student.gpa}</div>
               <div className='centerThis'>
-                <button onClick={() => this.props.unregisterThisStudent(student.id)}>Unregister</button>
+                <button onClick={() => this.unregisterStudent(student.id)}>Unregister</button>
               </div>
             </div>
           )}
