@@ -84,7 +84,17 @@ a:hover {
 }
 
 .largeImage {
-  width: 97vw;
+  width: 85vw;
+  /* max-width: 800px; */
+  padding-left: 35px;
+  padding-right: 35px;
+  height: auto;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.studentLargeImage {
+  width: 50vw;
   /* max-width: 800px; */
   padding-left: 35px;
   padding-right: 35px;
@@ -125,6 +135,18 @@ button {
   border: 1px solid rgba(0, 0, 0, 0.392);
   width: 10em;
   height: 10.6em;
+  margin-top: 11px;
+  margin-right: 16px;
+  margin-bottom: 8px;
+  padding: 10px;
+  background-color: rgba(0, 0, 0, 0.112);
+  border-radius: 6px;
+}
+
+.singleItemOnSingleCampus {
+  border: 1px solid rgba(0, 0, 0, 0.392);
+  width: 10em;
+  height: 12em;
   margin-top: 11px;
   margin-right: 16px;
   margin-bottom: 8px;

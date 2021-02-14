@@ -146,6 +146,15 @@ const seed = async () => {
       gpa: 3.7,
     })
 
+    /////// TESTING REMOVE CAMPUS ///////
+
+    // await Student.update(
+    //   {campusId: null},
+    //   {where: {
+    //     id: 2
+    //   }}
+    // )
+
     ////////////////// TESTING DUKE SINGLE CAMPUS VIEW //////////
 
     const Jac = await Student.create({
@@ -155,7 +164,7 @@ const seed = async () => {
       imageUrl: 'https://pbs.twimg.com/media/BtFUrp6CEAEmsml.jpg',
       gpa: 3.8,
     })
-    await Jac.setCampus(Duke)
+    await Jac.setCampus(UCLA)
 
     const Ja = await Student.create({
       firstName: 'Jack',

@@ -38,7 +38,7 @@ export class SingleStudentView extends React.Component {
             <div className='flex'>
               <div className='centerThis'>
                 <div className='marginTop'>{this.props.studentAndTheirCampus[0].firstName} {this.props.studentAndTheirCampus[0].lastName}</div>
-                <img src={this.props.studentAndTheirCampus[0].imageUrl} alt="image" className='largeImage'></img>
+                <img src={this.props.studentAndTheirCampus[0].imageUrl} alt="image" className='studentLargeImage'></img>
                 <div className='marginBottom'>Email: {this.props.studentAndTheirCampus[0].email}</div>
                 <div className='marginBottom'>GPA: {this.props.studentAndTheirCampus[0].gpa}</div>
                 {/* {floatGPA} */}

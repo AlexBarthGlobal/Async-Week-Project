@@ -3,26 +3,42 @@ import { connect } from "react-redux"
 import { Link } from 'react-router-dom'
 import {fetchCampusAndItsStudents} from '../redux/singleCampus'
 import SingleStudent from './SingleStudent'
+import {unregisterStudentThunk} from '../redux/singleCampus'
 
 export class SingleCampusView extends React.Component {
+  constructor() {
+    super()
+    this.unregister = this.unregister.bind(this)
+  }
    
     componentDidMount() {
+      console.log('MOUNTING MOUNTING')
         const {id} = this.props.match.params;
         this.props.loadCampusAndItsStudents(id);
     }
 
+    async unregister(id) {
+      await this.props.unregisterThisStudent(id)
+      this.forceUpdate()
+    }
+
     render () {
+      console.log('PROPS ON SINGLE CAMPUS VIEW')
+      console.log(this.props)
       if (this.props.campusAndItsStudents) { //This code will run after the initial render, after the dispatch/store updates
-          console.log('PROPS ON SINGLE CAMPUS VIEW')
-          console.log(this.props)
+          // console.log('PROPS ON SINGLE CAMPUS VIEW')
+          // console.log(this.props)
 
           if (this.props.campusAndItsStudents[0].students.length) { //This is checking if there are students enrolled to this campus
           var renderStudentsFromCampus =
             <div className='allItems'>
-              {this.props.campusAndItsStudents[0].students.map(student =>
-              <div key={student.id} className='singleItem'> 
+              {this.props.campusAndItsStudents[0].students.map(student => 
+              <div key={student.id} className='singleItemOnSingleCampus'>
                 <SingleStudent key={student.id} listId={student.id} firstName={student.firstName} lastName={student.lastName} imageUrl={student.imageUrl} />
                 <div className='centerThis marginSmallTop'>GPA: {student.gpa}</div>
+                <div className='centerThis'>
+                <button onClick={() => this.unregister(student.id)}>Unregister</button>
+                </div>
               </div>
               )}
             </div>
@@ -67,6 +83,8 @@ export class SingleCampusView extends React.Component {
 }
 
 const mapState = (state) => {
+  console.log('STATE UPDATED')
+  console.log(state.campusAndItsStudents)
     return {
       campusAndItsStudents: state.campusAndItsStudents.data
     };
@@ -74,7 +92,8 @@ const mapState = (state) => {
   
   const mapDispatch = (dispatch) => {
     return {
-      loadCampusAndItsStudents: (id) => dispatch(fetchCampusAndItsStudents(id))
+      loadCampusAndItsStudents: (id) => dispatch(fetchCampusAndItsStudents(id)),
+      unregisterThisStudent: (id) => dispatch(unregisterStudentThunk(id))
     };
   };
 
