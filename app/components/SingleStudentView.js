@@ -32,9 +32,17 @@ export class SingleStudentView extends React.Component {
   render () {
     const changeCampusMenu = this.props.studentAndTheirCampus && this.props.campuses ? (
       <select onChange={this.updateToSelectedCampus} className='marginSide'>
-        <option value ='none'>Change Campu...</option>
+        <option value ='none'>Change Campus...</option>
           {this.props.campuses.map(campus => {
-            if (campus.id !== this.props.studentAndTheirCampus[0].campusInfo[0].id) {
+            console.log(this.props)
+            console.log('Student and their campus')
+            console.log(this.props.studentAndTheirCampus)
+            if (this.props.studentAndTheirCampus[0].campusInfo) {
+              var currCampusId = this.props.studentAndTheirCampus[0].campusInfo[0].id
+            } else if (this.props.currStudentInfo[0]) {
+              var currCampusId = this.props.currStudentInfo[0].campusId
+            }
+            if (campus.id !== currCampusId) {
               return <option key={campus.id} value={campus.id}>{campus.campusName}</option>
             }})}
       </select>  

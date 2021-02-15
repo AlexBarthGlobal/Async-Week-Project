@@ -61,13 +61,15 @@ export default function singleStudentReducer(state = initialState, action) {
         case SET_STUDENT_AND_THEIR_CAMPUS:
             return action.studentAndTheirCampus
         case CHANGE_STUDENT_CAMPUS:
-            console.log('ORIGINAL STATE')
-            console.log(state)
-            console.log('Changed campus')
-            console.log(action.changedCampus)
             const newChangedCampus = {...state}
+            if (newChangedCampus.data[0].campusInfo) {
             newChangedCampus.data[0].campusInfo[0] = action.changedCampus.data[0];
             return newChangedCampus;
+            } else if (newChangedCampus.data[0]) {
+                newChangedCampus.data[0].campusInfo = [1];
+                newChangedCampus.data[0].campusInfo[0] = action.changedCampus.data[0];
+                return newChangedCampus;
+            }
         default:
             return state
     };
