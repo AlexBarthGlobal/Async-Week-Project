@@ -3,13 +3,29 @@ import { connect } from "react-redux"
 import { Link } from 'react-router-dom'
 import {fetchStudentAndTheirCampus} from '../redux/singleStudent'
 import SingleCampus from './SingleCampus'
+import {fetchCampuses} from '../redux/campuses'
+import {changeStudentCampusThunk} from '../redux/singleStudent'
 
 export class SingleStudentView extends React.Component {
+  constructor(props) {
+    super(props)
+
+    this.updateToSelectedCampus = this.updateToSelectedCampus.bind(this)
+  }
    
   componentDidMount() {
+    console.log('PROPS ON MOUNT')
+    console.log(this.props)
     const {id} = this.props.match.params;
     this.props.loadStudentAndTheirCampus(id);
+    if (!this.props.campuses) {
+      this.props.loadCampuses();
+    }
   };
+
+  updateToSelectedCampus(event) {
+    this.props.changeCampus({student: this.props.match.params.id, campus: {data: event.target.value}});
+  }
     
   render () {
     if (this.props.studentAndTheirCampus) {
@@ -23,6 +39,8 @@ export class SingleStudentView extends React.Component {
         var renderSingleCampus = <div className='marginBottom marginTop'>Student is not enrolled yet!</div>
       };
     };
+    console.log('HERE ARE THE PROPS')
+    console.log(this.props)
 
     return this.props.currStudentInfo ? (
       <div className='flex'>
@@ -31,7 +49,14 @@ export class SingleStudentView extends React.Component {
           <img src={this.props.currStudentInfo[0].imageUrl} alt="image" className='studentLargeImage'></img>
           <div className='marginBottom'>Email: {this.props.currStudentInfo[0].email}</div>
           <div className='marginBottom'>GPA: {this.props.currStudentInfo[0].gpa}</div>
-          <Link to={{pathname: `/students/edit/${this.props.currStudentInfo[0].id}`, state:{prevUrl: location.pathname}}} className=''><button>Edit Student</button></Link>
+          <Link to={{pathname: `/students/edit/${this.props.currStudentInfo[0].id}`, state:{prevUrl: location.pathname}}} className=''><button className='marginSide'>Edit Student</button></Link>
+          <select onChange={this.updateToSelectedCampus} className='marginSide'>
+            <option value='none'>Change Campus...</option>
+            {/* {this.props.campuses.map(campus => {
+              if (campus.id !== this.props.studentAndTheirCampus[0].campusInfo[0].id) {
+              return <option key={campus.id} value={campus.id}>{campus.campusName}</option>
+            }})} */}
+          </select>
         </div>
         <div className='allItems'>
           {renderSingleCampus}
@@ -45,7 +70,14 @@ export class SingleStudentView extends React.Component {
           <img src={this.props.studentAndTheirCampus[0].imageUrl} alt="image" className='studentLargeImage'></img>
           <div className='marginBottom'>Email: {this.props.studentAndTheirCampus[0].email}</div>
           <div className='marginBottom'>GPA: {this.props.studentAndTheirCampus[0].gpa}</div>
-          <Link to={{pathname: `/students/edit/${this.props.studentAndTheirCampus[0].id}`, state:{prevUrl: location.pathname}}} className=''><button>Edit Student</button></Link>
+          <Link to={{pathname: `/students/edit/${this.props.studentAndTheirCampus[0].id}`, state:{prevUrl: location.pathname}}} className=''><button className='marginSide'>Edit Student</button></Link>
+          <select onChange={this.updateToSelectedCampus} className='marginSide'>
+            <option value ='none'>Change Campu...</option>
+            {/* {this.props.campuses.map(campus => {
+              if (campus.id !== this.props.studentAndTheirCampus[0].campusInfo[0].id) {
+              return <option key={campus.id} value={campus.id}>{campus.campusName}</option>
+            }})} */}
+          </select>
         </div>
         <div className='allItems'>
           {renderSingleCampus}
@@ -63,21 +95,29 @@ export class SingleStudentView extends React.Component {
 };
 
 const mapState = (state, {match}) => {
+  console.log('HERES THE STATE')
   console.log(state)
   const currStudentInfo = state.students.data ? state.students.data.filter(student => student.id == match.params.id*1) : null;
   if (currStudentInfo) {
   var currCampus = state.campuses.data ? state.campuses.data.filter(campus => campus.id == currStudentInfo[0].campusId) : null;
   };
+  if (state.campuses.data) {
+    var campuses = state.campuses.data
+  }
   return {
       studentAndTheirCampus: state.studentAndTheirCampus.data,
       currStudentInfo,
-      currCampus
+      currCampus,
+      campuses
+
   };
 };
   
 const mapDispatch = (dispatch) => {
   return {
     loadStudentAndTheirCampus: (id) => dispatch(fetchStudentAndTheirCampus(id)),
+    loadCampuses: () => dispatch(fetchCampuses()),
+    changeCampus: (id) => dispatch(changeStudentCampusThunk(id))
   };
 };
 
