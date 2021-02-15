@@ -22,13 +22,13 @@ class EditCampus extends React.Component {
 
     if (this.props.campusAndItsStudents) {
       if (this.props.campusAndItsStudents.data) {
-      this.setState({
-        campusName: this.props.campusAndItsStudents.data[0].campusName,
-        address: this.props.campusAndItsStudents.data[0].address,
-        imageUrl: this.props.campusAndItsStudents.data[0].imageUrl,
-        description: this.props.campusAndItsStudents.data[0].description     
-      })
-    }
+        this.setState({
+          campusName: this.props.campusAndItsStudents.data[0].campusName,
+          address: this.props.campusAndItsStudents.data[0].address,
+          imageUrl: this.props.campusAndItsStudents.data[0].imageUrl,
+          description: this.props.campusAndItsStudents.data[0].description     
+        })
+      }
     } else if (this.props.altCampus) {
       this.setState({
         campusName: this.props.altCampus.campusName,
@@ -37,15 +37,15 @@ class EditCampus extends React.Component {
        description: this.props.altCampus.description
      })
   } else if (this.props.campus) {
-      if (this.props.campus.campusName) {
-        this.setState({
-          campusName: this.props.campus[0].campusName,
-          address: this.props.campus[0].address,
-          imageUrl: this.props.campus[0].imageUrl,
-          description: this.props.campus[0].description
-        })
-      }
-   } 
+    if (this.props.campus.campusName) {
+      this.setState({
+        campusName: this.props.campus[0].campusName,
+        address: this.props.campus[0].address,
+        imageUrl: this.props.campus[0].imageUrl,
+        description: this.props.campus[0].description
+      })
+    };
+  };
 };
 
   handleChange (evt) {

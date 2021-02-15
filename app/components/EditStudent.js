@@ -2,6 +2,7 @@ import React from 'react';
 import { editStudentThunk } from '../redux/students';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
+import {fetchStudentAndTheirCampus} from '../redux/singleStudent'
 
 class EditStudent extends React.Component {
   constructor () {
@@ -18,14 +19,18 @@ class EditStudent extends React.Component {
   }
 
   componentDidMount () {
-    if (this.props.student) {
+    this.props.loadStudentAndTheirCampus(this.props.match.params.id);
+
+    if (this.props.studentAndTheirCampus) {
+      if (this.props.studentAndTheirCampus.data) {
         this.setState({
-          firstName: this.props.student[0].firstName,
-          lastName: this.props.student[0].lastName,
-          email: this.props.student[0].email,
-          imageUrl: this.props.student[0].imageUrl,
-          gpa: this.props.student[0].gpa
+          firstName: this.props.studentAndTheirCampus.data[0].firstName,
+          lastName: this.props.studentAndTheirCampus.data[0].lastName,
+          email: this.props.studentAndTheirCampus.data[0].email,
+          imageUrl: this.props.studentAndTheirCampus.data[0].imageUrl,
+          gpa: this.props.studentAndTheirCampus.data[0].gpa
         })
+      }
     } else if (this.props.altStudent) {
         this.setState({
           firstName: this.props.altStudent.firstName,
@@ -33,9 +38,20 @@ class EditStudent extends React.Component {
           email: this.props.altStudent.email,
           imageUrl: this.props.altStudent.imageUrl,
           gpa: this.props.altStudent.gpa
-       })
+        })
+      } else if (this.props.student) {
+        if (this.props.student.firstName) {
+          this.setState({
+          firstName: this.props.student[0].firstName,
+          lastName: this.props.student[0].lastName,
+          email: this.props.student[0].email,
+          imageUrl: this.props.student[0].imageUrl,
+          gpa: this.props.student[0].gpa
+        })
+      };
     };
   };
+
 
   handleChange (evt) {
     this.setState({
@@ -49,7 +65,6 @@ class EditStudent extends React.Component {
   };
 
   render () {
-    console.log('RENDERING')
     const { firstName, lastName, email, imageUrl, gpa } = this.state;
     const { handleSubmit, handleChange } = this;
     return (
@@ -102,10 +117,12 @@ export default connect(({students, studentAndTheirCampus}, { match })=> {
     }
     student = student || {};
     return {
-      student
+      student,
+      studentAndTheirCampus
     };
   }, (dispatch, { history })=> {
   return {
-    editStudent: (student)=> dispatch(editStudentThunk(student, history))
+    editStudent: (student)=> dispatch(editStudentThunk(student, history)),
+    loadStudentAndTheirCampus: (id) => dispatch(fetchStudentAndTheirCampus(id))
   };
 })(EditStudent);
