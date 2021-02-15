@@ -1,5 +1,30 @@
 import axios from 'axios'
 
+const REGISTER_STUDENT = 'REGISTER_STUDENT'
+
+export const registerStudent = (registeredStudent) => {
+  return {
+    type: REGISTER_STUDENT,
+    registeredStudent
+  };
+};
+
+export const registerStudentThunk = (ids) => {
+  return async (dispatch) => {
+    try {
+      console.log('About to thunk')
+      const registeredStudent = (await axios.put(`/api/students/register/${ids.student}`, ids.campus))
+      console.log('THUNK RECIEVES REGISTERED STUDENT')
+      await console.log(registeredStudent)
+      dispatch(registerStudent(registeredStudent))
+    } catch (err) {
+      console.log(err)
+    }
+  }
+}
+
+///
+
 const UNREGISTER_STUDENT = 'UNREGISTER_STUDENT'
 
 export const unregisterStudent = (unregisteredStudent) => {
@@ -125,6 +150,9 @@ export default function studentsReducer(state = initialState, action) {
       return {...state, data: deletedStudentReturn}
     case EDIT_STUDENT:
       return state.map(student => student.id === action.student.id ? action.student : student);
+    case REGISTER_STUDENT:
+      const updatedStudents = state.data.map(student => student.id == action.registeredStudent.data.id ? action.registeredStudent.data : student)
+      return {...state, data: updatedStudents}
     default:
       return state
   };

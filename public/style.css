@@ -83,6 +83,12 @@ a:hover {
   flex-direction: column;
 }
 
+.marginSide {
+  margin-left: 12px;
+  position: relative;
+  left: 6px;
+}
+
 .largeImage {
   width: 85vw;
   /* max-width: 800px; */

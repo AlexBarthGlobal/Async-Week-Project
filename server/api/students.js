@@ -27,7 +27,6 @@ router.get('/:id', async (req, res, next) => {
 })
 
 router.post('/addstudent', async (req, res, next) => {
-    console.log(req.body)
     try {   
         res.status(201).send(await Student.create(req.body));
     } catch (err) {
@@ -57,7 +56,6 @@ router.put('/edit/:id', async (req, res, next) => {
 })
 
 router.put('/unregister/:id', async (req, res, next) => {
-    console.log(req.params.id)
     try {
        await Student.update(
             {campusId: null},
@@ -67,6 +65,21 @@ router.put('/unregister/:id', async (req, res, next) => {
         )
         const unregisteredStudent = await Student.findByPk(req.params.id)
         res.send(unregisteredStudent)
+    } catch (err) {
+        next(err)
+    }
+})
+
+router.put('/register/:id', async (req, res, next) => {
+    try {
+       await Student.update(
+            {campusId: req.body.data},
+            {where: {
+                id: req.params.id
+            }}
+        )
+        const registeredStudent = await Student.findByPk(req.params.id)
+        await res.send(registeredStudent)
     } catch (err) {
         next(err)
     }

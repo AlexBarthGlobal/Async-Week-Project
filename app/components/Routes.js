@@ -10,6 +10,7 @@ import AddStudent from './AddStudent'
 import EditCampus from './EditCampus'
 import EditStudent from './EditStudent'
 import Page404 from './page404'
+import CampusRegisterStudents from './CampusRegisterStudents'
 
 const Routes = () => {
   return (
@@ -25,6 +26,7 @@ const Routes = () => {
             <Route exact path='/' component={HomePage} />
             <Route exact path='/campuses' component={AllCampuses} />
             <Route exact path='/students' component={AllStudents} />
+            <Route exact path='/campuses/registerstudents/:id' component={CampusRegisterStudents} />
             <Route exact path='/campuses/:id' component={SingleCampusView} />
             <Route exact path='/students/:id' component={SingleStudentView} />
             <Route exact path='/addcampus' component={AddCampus} />

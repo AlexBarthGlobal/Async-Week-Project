@@ -39,7 +39,8 @@ export class SingleCampusView extends React.Component {
           <img src={this.props.currCampusInfo[0].imageUrl} alt="image" className='largeImage'></img>
           <div>{this.props.currCampusInfo[0].address}</div>
           <div className='marginTop bodySize'>{this.props.currCampusInfo[0].description}</div>
-          <Link to={{pathname: `/campuses/edit/${this.props.currCampusInfo[0].id}`, state:{prevUrl: location.pathname}}}><button>Edit Campus</button></Link>
+          <Link to={{pathname: `/campuses/edit/${this.props.currCampusInfo[0].id}`, state:{prevUrl: location.pathname}}}><button className='marginSide'>Edit Campus</button></Link>
+          <Link to={{pathname: `/campuses/registerstudents/${this.props.currCampusInfo[0].id}`, state:{prevUrl: location.pathname}}}><button className='marginSide'>Register Students</button></Link>
         </div>
         {renderStudentsFromCampus}
       </div>  
@@ -51,7 +52,8 @@ export class SingleCampusView extends React.Component {
           <img src={this.props.campusAndItsStudents[0].imageUrl} alt="image" className='largeImage'></img>
           <div>{this.props.campusAndItsStudents[0].address}</div>
           <div className='marginTop bodySize'>{this.props.campusAndItsStudents[0].description}</div>
-          <Link to={{pathname: `/campuses/edit/${this.props.campusAndItsStudents[0].id}`, state:{prevUrl: location.pathname}}}><button>Edit Campus</button></Link>
+          <Link to={{pathname: `/campuses/edit/${this.props.campusAndItsStudents[0].id}`, state:{prevUrl: location.pathname}}}><button className='marginSide'>Edit Campus</button></Link>
+          <Link to={{pathname: `/campuses/registerstudents/${this.props.campusAndItsStudents[0].id}`, state:{prevUrl: location.pathname}}}><button className='marginSide'>Register Students</button></Link>
         </div>
         {renderStudentsFromCampus}
       </div>  
