@@ -9,7 +9,7 @@ import AddCampus from './AddCampus'
 import AddStudent from './AddStudent'
 import EditCampus from './EditCampus'
 import EditStudent from './EditStudent'
-import page404 from './page404'
+import Page404 from './page404'
 
 const Routes = () => {
   return (
@@ -31,7 +31,7 @@ const Routes = () => {
             <Route exact path='/addstudent' component={AddStudent} />
             <Route exact path='/campuses/edit/:id' component={EditCampus} />
             <Route exact path='/students/edit/:id' component={EditStudent} />
-            <Route component={page404} />
+            <Route component={Page404} />
           </Switch>
         </main>
       </div>

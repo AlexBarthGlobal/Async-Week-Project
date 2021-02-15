@@ -19,7 +19,7 @@ router.get('/:id', async (req, res, next) => {
                 id: id
             },
         })
-        if (!studentAndTheirCampus.length) res.sendStatus(400)
+        if (!studentAndTheirCampus.length) throw Error
         res.json(studentAndTheirCampus)
     } catch (err) {
         next(err)
@@ -78,5 +78,5 @@ router.use((req, res) => {
 
 router.use((err, req, res, next) => {
     console.error(err.stack);
-    res.status(500).send('500 error')
+    res.status(500).send('500 server error')
   })

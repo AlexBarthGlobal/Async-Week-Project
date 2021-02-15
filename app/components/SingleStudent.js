@@ -1,7 +1,9 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
+import Page404 from './page404'
 
-const SingleStudent = (props) => {  
+const SingleStudent = (props) => {
+    
     return (
         <div>
             <div className='centerThis'>
