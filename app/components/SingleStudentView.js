@@ -5,6 +5,7 @@ import {fetchStudentAndTheirCampus} from '../redux/singleStudent'
 import SingleCampus from './SingleCampus'
 import {fetchCampuses} from '../redux/campuses'
 import {changeStudentCampusThunk} from '../redux/singleStudent'
+import {fetchStudents} from '../redux/students'
 
 export class SingleStudentView extends React.Component {
   constructor(props) {
@@ -18,6 +19,9 @@ export class SingleStudentView extends React.Component {
     this.props.loadStudentAndTheirCampus(id);
     if (!this.props.campuses) {
       this.props.loadCampuses();
+    }
+    if (!this.props.students) {
+      this.props.loadStudents();
     }
   };
 
@@ -105,7 +109,7 @@ const mapState = (state, {match}) => {
       currStudentInfo,
       currCampus,
       campuses,
-      // students: state.students.data
+      students: state.students.data
 
   };
 };
@@ -115,7 +119,7 @@ const mapDispatch = (dispatch) => {
     loadStudentAndTheirCampus: (id) => dispatch(fetchStudentAndTheirCampus(id)),
     loadCampuses: () => dispatch(fetchCampuses()),
     changeCampus: (id) => dispatch(changeStudentCampusThunk(id)),
-    // loadStudents: () => dispatch(fetchStudents())
+    loadStudents: () => dispatch(fetchStudents())
   };
 };
 
