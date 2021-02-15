@@ -14,8 +14,6 @@ export class SingleStudentView extends React.Component {
   }
    
   componentDidMount() {
-    console.log('PROPS ON MOUNT')
-    console.log(this.props)
     const {id} = this.props.match.params;
     this.props.loadStudentAndTheirCampus(id);
     if (!this.props.campuses) {
@@ -28,6 +26,18 @@ export class SingleStudentView extends React.Component {
   }
     
   render () {
+    const changeCampusMenu = this.props.studentAndTheirCampus && this.props.campuses ? (
+      <select onChange={this.updateToSelectedCampus} className='marginSide'>
+        <option value ='none'>Change Campu...</option>
+          {this.props.campuses.map(campus => {
+            if (campus.id !== this.props.studentAndTheirCampus[0].campusInfo[0].id) {
+              return <option key={campus.id} value={campus.id}>{campus.campusName}</option>
+            }})}
+      </select>  
+    ) : (
+      <div>Loading Campuses...</div>
+    );
+
     if (this.props.studentAndTheirCampus) {
       if (this.props.studentAndTheirCampus[0].campusInfo) {
         var renderSingleCampus = 
@@ -39,8 +49,6 @@ export class SingleStudentView extends React.Component {
         var renderSingleCampus = <div className='marginBottom marginTop'>Student is not enrolled yet!</div>
       };
     };
-    console.log('HERE ARE THE PROPS')
-    console.log(this.props)
 
     return this.props.currStudentInfo ? (
       <div className='flex'>
@@ -50,13 +58,7 @@ export class SingleStudentView extends React.Component {
           <div className='marginBottom'>Email: {this.props.currStudentInfo[0].email}</div>
           <div className='marginBottom'>GPA: {this.props.currStudentInfo[0].gpa}</div>
           <Link to={{pathname: `/students/edit/${this.props.currStudentInfo[0].id}`, state:{prevUrl: location.pathname}}} className=''><button className='marginSide'>Edit Student</button></Link>
-          <select onChange={this.updateToSelectedCampus} className='marginSide'>
-            <option value='none'>Change Campus...</option>
-            {/* {this.props.campuses.map(campus => {
-              if (campus.id !== this.props.studentAndTheirCampus[0].campusInfo[0].id) {
-              return <option key={campus.id} value={campus.id}>{campus.campusName}</option>
-            }})} */}
-          </select>
+          {changeCampusMenu}
         </div>
         <div className='allItems'>
           {renderSingleCampus}
@@ -71,13 +73,7 @@ export class SingleStudentView extends React.Component {
           <div className='marginBottom'>Email: {this.props.studentAndTheirCampus[0].email}</div>
           <div className='marginBottom'>GPA: {this.props.studentAndTheirCampus[0].gpa}</div>
           <Link to={{pathname: `/students/edit/${this.props.studentAndTheirCampus[0].id}`, state:{prevUrl: location.pathname}}} className=''><button className='marginSide'>Edit Student</button></Link>
-          <select onChange={this.updateToSelectedCampus} className='marginSide'>
-            <option value ='none'>Change Campu...</option>
-            {/* {this.props.campuses.map(campus => {
-              if (campus.id !== this.props.studentAndTheirCampus[0].campusInfo[0].id) {
-              return <option key={campus.id} value={campus.id}>{campus.campusName}</option>
-            }})} */}
-          </select>
+          {changeCampusMenu}
         </div>
         <div className='allItems'>
           {renderSingleCampus}
@@ -108,7 +104,8 @@ const mapState = (state, {match}) => {
       studentAndTheirCampus: state.studentAndTheirCampus.data,
       currStudentInfo,
       currCampus,
-      campuses
+      campuses,
+      // students: state.students.data
 
   };
 };
@@ -117,7 +114,8 @@ const mapDispatch = (dispatch) => {
   return {
     loadStudentAndTheirCampus: (id) => dispatch(fetchStudentAndTheirCampus(id)),
     loadCampuses: () => dispatch(fetchCampuses()),
-    changeCampus: (id) => dispatch(changeStudentCampusThunk(id))
+    changeCampus: (id) => dispatch(changeStudentCampusThunk(id)),
+    // loadStudents: () => dispatch(fetchStudents())
   };
 };
 
