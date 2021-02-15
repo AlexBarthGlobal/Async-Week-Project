@@ -66,7 +66,7 @@ export class AllStudents extends React.Component {
 const mapState = (state) => {
   return {
     students: state.students.data,
-    campuses: state.campuses.data,
+    campuses: state.campuses.data
   };
 };
 

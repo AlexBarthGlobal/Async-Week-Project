@@ -1,9 +1,9 @@
 import React from 'react'
 
-const page404 = () => {
+const Page404 = () => {
     return (
         <div className='marginTop'>404 not found!</div>
     )
 };
 
-export default page404
+export default Page404

@@ -107,7 +107,7 @@ const seed = async () => {
     const Stephanie = await Student.create({
       firstName: 'Stephanie',
       lastName: 'Bilal',
-      email: 'stephanieanton@email.com',
+      email: 'stephaniebilal@email.com',
       imageUrl: 'https://pbs.twimg.com/media/BtFUrp6CEAEmsml.jpg',
       gpa: 3.9,
     })
@@ -117,7 +117,7 @@ const seed = async () => {
 
     const Duke = await Campus.create({
       campusName: 'Duke University',
-      address: 'Cambridge, MA',
+      address: 'Durham, NC',
       imageUrl: 'https://frontiersinblog.files.wordpress.com/2020/02/26628043971_c8c3a4a770_k.jpg',
       description: `Let's win some basketball tournaments. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.`
     })

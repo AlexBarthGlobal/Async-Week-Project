@@ -32,16 +32,16 @@ class EditStudent extends React.Component {
         })
       }
     } else if (this.props.altStudent) {
+      this.setState({
+        firstName: this.props.altStudent.firstName,
+        lastName: this.props.altStudent.lastName,
+        email: this.props.altStudent.email,
+        imageUrl: this.props.altStudent.imageUrl,
+        gpa: this.props.altStudent.gpa
+      })
+    } else if (this.props.student) {
+      if (this.props.student.firstName) {
         this.setState({
-          firstName: this.props.altStudent.firstName,
-          lastName: this.props.altStudent.lastName,
-          email: this.props.altStudent.email,
-          imageUrl: this.props.altStudent.imageUrl,
-          gpa: this.props.altStudent.gpa
-        })
-      } else if (this.props.student) {
-        if (this.props.student.firstName) {
-          this.setState({
           firstName: this.props.student[0].firstName,
           lastName: this.props.student[0].lastName,
           email: this.props.student[0].email,
@@ -51,7 +51,6 @@ class EditStudent extends React.Component {
       };
     };
   };
-
 
   handleChange (evt) {
     this.setState({

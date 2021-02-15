@@ -1,3 +1,15 @@
+
+
+
+
+-----------------------------------------
+***** Alex Barth Walkthrough Presentation: https://www.youtube.com/watch?v=T8DlrRR64vs&feature=youtu.be
+-----------------------------------------
+
+
+
+
+
 # Junior Phase Final Project
 
 ## Getting started
@@ -43,10 +55,6 @@ Take a look in the wireframes folder as a reference for how your front-end _coul
 Please submit a short, 5 minute screencast of a walk-through of the functionality for each user story in your app. E.g. for "As a user, I can create a project", you can fill out the form for creating a project and then see the new project appear in the projects list. *There is no need to show us the code you wrote.* We recommend using Quicktime to record the screencast (instructions on how to do that [here](https://support.apple.com/kb/PH5882?locale=en_US&viewlocale=en_US)).
 
 Once you've recorded your screencast, please *upload it to YouTube as an unlisted video*. **Include a link to the video in your repo's README** and include your repo link in the video description. This will aid us in evaluating your submission.
-
------------------------
-***** Here's the video: 
------------------------
 
 Well before the deadline, we recommend practicing this by recording a very short screencast and uploading it as an unlisted video. If you encounter any technical issues, reach out to us so that we can help you resolve them.
 

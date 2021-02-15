@@ -9,7 +9,7 @@ import AddCampus from './AddCampus'
 import AddStudent from './AddStudent'
 import EditCampus from './EditCampus'
 import EditStudent from './EditStudent'
-import Page404 from './page404'
+import Page404 from './Page404'
 import CampusRegisterStudents from './CampusRegisterStudents'
 
 const Routes = () => {

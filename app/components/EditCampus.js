@@ -34,19 +34,19 @@ class EditCampus extends React.Component {
         campusName: this.props.altCampus.campusName,
         address: this.props.altCampus.address,
         imageUrl: this.props.altCampus.imageUrl,
-       description: this.props.altCampus.description
-     })
-  } else if (this.props.campus) {
-    if (this.props.campus.campusName) {
-      this.setState({
-        campusName: this.props.campus[0].campusName,
-        address: this.props.campus[0].address,
-        imageUrl: this.props.campus[0].imageUrl,
-        description: this.props.campus[0].description
+        description: this.props.altCampus.description
       })
+    } else if (this.props.campus) {
+      if (this.props.campus.campusName) {
+        this.setState({
+          campusName: this.props.campus[0].campusName,
+          address: this.props.campus[0].address,
+          imageUrl: this.props.campus[0].imageUrl,
+          description: this.props.campus[0].description
+        })
+      };
     };
   };
-};
 
   handleChange (evt) {
     this.setState({
