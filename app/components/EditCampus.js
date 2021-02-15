@@ -2,6 +2,7 @@ import React from 'react';
 import { editCampusThunk } from '../redux/campuses';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
+import {fetchCampusAndItsStudents} from '../redux/singleCampus'
 
 class EditCampus extends React.Component {
   constructor () {
@@ -17,22 +18,35 @@ class EditCampus extends React.Component {
   };
 
   componentDidMount () {
-    if (this.props.campus) {
+    this.props.loadCampusAndItsStudents(this.props.match.params.id)
+
+    if (this.props.campusAndItsStudents) {
+      if (this.props.campusAndItsStudents.data) {
+      this.setState({
+        campusName: this.props.campusAndItsStudents.data[0].campusName,
+        address: this.props.campusAndItsStudents.data[0].address,
+        imageUrl: this.props.campusAndItsStudents.data[0].imageUrl,
+        description: this.props.campusAndItsStudents.data[0].description     
+      })
+    }
+    } else if (this.props.altCampus) {
+      this.setState({
+        campusName: this.props.altCampus.campusName,
+        address: this.props.altCampus.address,
+        imageUrl: this.props.altCampus.imageUrl,
+       description: this.props.altCampus.description
+     })
+  } else if (this.props.campus) {
+      if (this.props.campus.campusName) {
         this.setState({
           campusName: this.props.campus[0].campusName,
           address: this.props.campus[0].address,
           imageUrl: this.props.campus[0].imageUrl,
           description: this.props.campus[0].description
         })
-    } else if (this.props.altCampus) {
-        this.setState({
-          campusName: this.props.altCampus.campusName,
-          address: this.props.altCampus.address,
-          imageUrl: this.props.altCampus.imageUrl,
-         description: this.props.altCampus.description
-       })
-    };
-  };
+      }
+   } 
+};
 
   handleChange (evt) {
     this.setState({
@@ -93,10 +107,12 @@ export default connect(({campuses, campusAndItsStudents}, { match }) => {
   }
   campus = campus || {};
   return {
-    campus
+    campus, 
+    campusAndItsStudents
   };
 }, (dispatch, { history })=> {
   return {
-    editCampus: (campus)=> dispatch(editCampusThunk(campus, history))
+    editCampus: (campus)=> dispatch(editCampusThunk(campus, history)),
+    loadCampusAndItsStudents: (id) => dispatch(fetchCampusAndItsStudents(id))
   };
 })(EditCampus);

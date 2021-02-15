@@ -150,9 +150,6 @@ Congrats! You have completed your fourth vertical slice! Make sure to `commit -m
 - [X] Write a route to update an existing campus
 - [X] Write a route to update an existing student
 
-// Add a way to register students to campuses
-// Record the video
-
 </details>
 
 ### Bonus Tier: Finishing Touches (15 EC)

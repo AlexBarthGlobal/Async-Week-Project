@@ -24,7 +24,6 @@ export const changeStudentCampusThunk = (ids) => {
     }
 }
 
-
 ///
 
 const SET_STUDENT_AND_THEIR_CAMPUS = 'SET_STUDENT_AND_THEIR_CAMPUS'
