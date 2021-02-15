@@ -34,9 +34,6 @@ export class SingleStudentView extends React.Component {
       <select onChange={this.updateToSelectedCampus} className='marginSide'>
         <option value ='none'>Change Campus...</option>
           {this.props.campuses.map(campus => {
-            console.log(this.props)
-            console.log('Student and their campus')
-            console.log(this.props.studentAndTheirCampus)
             if (this.props.studentAndTheirCampus[0].campusInfo) {
               var currCampusId = this.props.studentAndTheirCampus[0].campusInfo[0].id
             } else if (this.props.currStudentInfo[0]) {
@@ -103,8 +100,6 @@ export class SingleStudentView extends React.Component {
 };
 
 const mapState = (state, {match}) => {
-  console.log('HERES THE STATE')
-  console.log(state)
   const currStudentInfo = state.students.data ? state.students.data.filter(student => student.id == match.params.id*1) : null;
   if (currStudentInfo) {
   var currCampus = state.campuses.data ? state.campuses.data.filter(campus => campus.id == currStudentInfo[0].campusId) : null;

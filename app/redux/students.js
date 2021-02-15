@@ -12,10 +12,7 @@ export const registerStudent = (registeredStudent) => {
 export const registerStudentThunk = (ids) => {
   return async (dispatch) => {
     try {
-      console.log('About to thunk')
       const registeredStudent = (await axios.put(`/api/students/register/${ids.student}`, ids.campus))
-      console.log('THUNK RECIEVES REGISTERED STUDENT')
-      await console.log(registeredStudent)
       dispatch(registerStudent(registeredStudent))
     } catch (err) {
       console.log(err)

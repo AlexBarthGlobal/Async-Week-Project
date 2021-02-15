@@ -10,13 +10,10 @@ export const changeStudentCampus = (changedCampus) => {
 }
 
 export const changeStudentCampusThunk = (ids) => {
-    console.log(ids)
     return async (dispatch) => {
         try {
             await axios.put(`/api/students/register/${ids.student}`, ids.campus)
             const returnedNewCampus = await axios.get(`/api/campuses/${ids.campus.data}`)
-            console.log('RETURNED NEW CAMPUS')
-            console.log(returnedNewCampus)
             dispatch(changeStudentCampus(returnedNewCampus))
         } catch (err) {
             console.log(err)

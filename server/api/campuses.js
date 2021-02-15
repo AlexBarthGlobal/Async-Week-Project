@@ -33,7 +33,6 @@ router.get('/:id', async (req, res, next) => {
 });
 
 router.post('/addcampus', async (req, res, next) => {
-    console.log(req.body)
     try {   
         res.status(201).send(await Campus.create(req.body));
     } catch (err) {
@@ -42,7 +41,6 @@ router.post('/addcampus', async (req, res, next) => {
 });
 
 router.delete('/:id', async (req, res, next) => {
-    console.log(req.body)
     try {
         const campusToDelete = await Campus.findByPk(req.params.id);
         await campusToDelete.destroy()
@@ -53,7 +51,6 @@ router.delete('/:id', async (req, res, next) => {
 });
 
 router.put('/edit/:id', async (req, res, next) => {
-    console.log(req.body)
     try {
         const campusToUpdate = await Campus.findByPk(req.params.id)
         res.send(await campusToUpdate.update(req.body));

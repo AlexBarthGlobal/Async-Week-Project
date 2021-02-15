@@ -44,6 +44,10 @@ Please submit a short, 5 minute screencast of a walk-through of the functionalit
 
 Once you've recorded your screencast, please *upload it to YouTube as an unlisted video*. **Include a link to the video in your repo's README** and include your repo link in the video description. This will aid us in evaluating your submission.
 
+-----------------------
+***** Here's the video: 
+-----------------------
+
 Well before the deadline, we recommend practicing this by recording a very short screencast and uploading it as an unlisted video. If you encounter any technical issues, reach out to us so that we can help you resolve them.
 
 ## Evaluation

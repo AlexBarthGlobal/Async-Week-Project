@@ -35,7 +35,6 @@ router.post('/addstudent', async (req, res, next) => {
 })
 
 router.delete('/:id', async (req, res, next) => {
-    console.log(req.body)
     try {
         const studentToDelete = await Student.findByPk(req.params.id);
         await studentToDelete.destroy()
@@ -46,7 +45,6 @@ router.delete('/:id', async (req, res, next) => {
 })
 
 router.put('/edit/:id', async (req, res, next) => {
-    console.log(req.body)
     try {
         const studentToUpdate = await Student.findByPk(req.params.id)
         res.send(await studentToUpdate.update(req.body));

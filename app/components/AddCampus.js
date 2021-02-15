@@ -60,8 +60,8 @@ class AddCampus extends React.Component {
         </div>
       </form>
     )
-  }
-}
+  };
+};
 
 export default connect(()=> {
   return {};

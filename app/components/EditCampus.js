@@ -18,7 +18,7 @@ class EditCampus extends React.Component {
   };
 
   componentDidMount () {
-    this.props.loadCampusAndItsStudents(this.props.match.params.id)
+    this.props.loadCampusAndItsStudents(this.props.match.params.id);
 
     if (this.props.campusAndItsStudents) {
       if (this.props.campusAndItsStudents.data) {

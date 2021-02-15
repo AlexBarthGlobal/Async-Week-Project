@@ -28,7 +28,14 @@ export class CampusRegisterStudents extends React.Component {
                   <div>Register Students To Campus</div>
                   <Link to={`/campuses/${this.props.match.params.id}`}><button>Done</button></Link>
                 </div>
-                <div className='allItems'>{this.props.students.map(student => {
+                <div className='allItems'>{this.props.students.sort(function(a,b) {
+                  var nameA=a.gpa, nameB=b.gpa
+                    if (nameA > nameB)
+                      return -1;
+                    if (nameA < nameB)
+                      return 1;
+                    return 0;
+            }).map(student => {
                     if (student.campusId != this.props.match.params.id) {
                   return <div key={student.id} className='singleItemOnSingleCampus'>
                     <SingleStudent key={student.id} listId={student.id} firstName={student.firstName} lastName={student.lastName} imageUrl={student.imageUrl}/>
@@ -54,8 +61,6 @@ export class CampusRegisterStudents extends React.Component {
 }
 
 const mapState = (state) => {
-  console.log('This is the state on props')
-  console.log(state)
     return {
         students: state.students.data
     }

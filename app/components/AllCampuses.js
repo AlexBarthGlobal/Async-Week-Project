@@ -26,7 +26,14 @@ export class AllCampuses extends React.Component {
               <div>All Campuses</div>
               <Link to={`/addcampus`}><button>Add Campus</button></Link>
             </div>
-            <div className="allItems">{this.props.campuses.map(campus =>
+            <div className="allItems">{this.props.campuses.sort(function(a,b) {
+              var nameA=a.campusName.toLowerCase(), nameB=b.campusName.toLowerCase()
+                if (nameA < nameB)
+                  return -1;
+                if (nameA > nameB)
+                  return 1;
+                return 0;
+            }).map(campus =>
               <div key={campus.id} className="singleItem">
                 <SingleCampus listId={campus.id} name={campus.campusName} imageUrl={campus.imageUrl} />
                 <div className='centerThis'>

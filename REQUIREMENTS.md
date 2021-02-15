@@ -178,8 +178,8 @@ Congrats! You have completed your fourth vertical slice! Make sure to `commit -m
 
 #### Ordering
 
-- [ ] Create option for students to be ordered based on lastName on all-students view
-- [ ] Create option for students to be ordered based on GPA on all-students view
+- [X] Create option for students to be ordered based on lastName on all-students view
+- [X] Create option for students to be ordered based on GPA on all-students view
 - [ ] Create option for campuses to be ordered based on number of enrolled students on all-campuses view
 
 #### Filtering
