@@ -4,6 +4,7 @@
 const db = require('./database')
 const Student = require('./student')
 const Campus = require('./campus')
+const User = require('./users')
 
 Campus.hasMany(Student)
 Student.belongsTo(Campus)
@@ -19,4 +20,5 @@ module.exports = {
   db,
   Campus,
   Student,
+  User
 }

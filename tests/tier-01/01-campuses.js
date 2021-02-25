@@ -40,7 +40,7 @@ import AllCampuses, {
   AllCampuses as UnconnectedAllCampuses
 } from "../../app/components/AllCampuses";
 import AllStudents from "../../app/components/AllStudents";
-import Routes from "../../app/components/Routes";
+import {Routes} from "../../app/components/Routes";
 
 describe("Tier One: Campuses", () => {
   // We'll use this array of campuses as dummy data for testing purposes

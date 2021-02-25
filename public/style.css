@@ -149,6 +149,18 @@ button {
   border-radius: 6px;
 }
 
+.singleItemNotLogged {
+  border: 1px solid rgba(0, 0, 0, 0.392);
+  width: 10em;
+  height: 8.9em;
+  margin-top: 11px;
+  margin-right: 16px;
+  margin-bottom: 8px;
+  padding: 10px;
+  background-color: rgba(0, 0, 0, 0.112);
+  border-radius: 6px;
+}
+
 .singleItemOnSingleCampus {
   border: 1px solid rgba(0, 0, 0, 0.392);
   width: 10em;

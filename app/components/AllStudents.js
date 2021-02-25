@@ -18,29 +18,56 @@ export class AllStudents extends React.Component {
   };
 
   render() {
+    if (this.props.user.id) {
+      var AddStudent= <Link to={`/addstudent`}><button>Add Student</button></Link>
+    }
+
+    var noStudentsMessage = !this.props.user.id ? <div className='marginTop'>No students to display! Come back later!</div> : <div className='marginTop'>No students to display! Click Add Student</div>
+
+
+
     if (this.props.students) { 
       if (this.props.students.length > 0) {
+        if (!this.props.user.id) {
+          var allStudents = this.props.students.sort(function(a,b) {
+            var nameA=a.lastName.toLowerCase(), nameB=b.lastName.toLowerCase()
+              if (nameA < nameB)
+                return -1;
+              if (nameA > nameB)
+                return 1;
+              return 0;
+          }).map(student =>
+            <div key={student.id} className='singleItemNotLogged'>
+              <SingleStudent key={student.id} listId={student.id} firstName={student.firstName} lastName={student.lastName} imageUrl={student.imageUrl}/>
+            </div> 
+            )
+        } else if (this.props.user.id) {
+          var allStudents = this.props.students.sort(function(a,b) {
+            var nameA=a.lastName.toLowerCase(), nameB=b.lastName.toLowerCase()
+              if (nameA < nameB)
+                return -1;
+              if (nameA > nameB)
+                return 1;
+              return 0;
+          }).map(student =>
+            <div key={student.id} className='singleItem'>
+              <SingleStudent key={student.id} listId={student.id} firstName={student.firstName} lastName={student.lastName} imageUrl={student.imageUrl}/>
+              <div className='centerThis'>
+                <button className='delete' onClick={() => this.props.deleteStudent(student.id)}>Delete</button>
+              </div>
+            </div> 
+            )
+        }
+
         return ( 
           <div>
             <div className='centerThis marginTop'>
               <div>All Students</div>
-              <Link to={`/addstudent`}><button>Add Student</button></Link>
+              {/* <Link to={`/addstudent`}><button>Add Student</button></Link> */}
+              {AddStudent}
             </div>
-            <div className='allItems'>{this.props.students.sort(function(a,b) {
-              var nameA=a.lastName.toLowerCase(), nameB=b.lastName.toLowerCase()
-                if (nameA < nameB)
-                  return -1;
-                if (nameA > nameB)
-                  return 1;
-                return 0;
-            }).map(student =>
-              <div key={student.id} className='singleItem'>
-                <SingleStudent key={student.id} listId={student.id} firstName={student.firstName} lastName={student.lastName} imageUrl={student.imageUrl}/>
-                <div className='centerThis'>
-                  <button className='delete' onClick={() => this.props.deleteStudent(student.id)}>Delete</button>
-                </div>
-              </div> 
-              )}       
+            <div className='allItems'>
+              {allStudents}
             </div>
           </div>
         ) 
@@ -56,8 +83,9 @@ export class AllStudents extends React.Component {
     return ( 
       <div className='centerThis marginTop'>
         <div>All Students</div>
-          <Link to={`/addstudent`}><button>Add Student</button></Link>
-        <div className='marginTop'>No students to display! Click Add Student</div>
+          {/* <Link to={`/addstudent`}><button>Add Student</button></Link> */}
+          {AddStudent}
+          {noStudentsMessage}
       </div>
     )
   };
@@ -66,7 +94,8 @@ export class AllStudents extends React.Component {
 const mapState = (state) => {
   return {
     students: state.students.data,
-    campuses: state.campuses.data
+    campuses: state.campuses.data,
+    user: state.userReducer.user
   };
 };
 

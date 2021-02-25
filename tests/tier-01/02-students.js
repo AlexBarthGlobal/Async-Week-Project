@@ -37,7 +37,7 @@ import AllStudents, {
   AllStudents as UnconnectedAllStudents
 } from "../../app/components/AllStudents";
 import AllCampuses from "../../app/components/AllCampuses";
-import Routes from "../../app/components/Routes";
+import {Routes} from "../../app/components/Routes";
 
 describe("Tier One: Students", () => {
   // We'll use this array of students as dummy data for testing purposes

@@ -4,6 +4,18 @@ const volleyball = require('volleyball')
 
 const app = express()
 
+const passport = require('passport')
+const session = require('express-session')
+
+app.use(session({
+  secret: 'This is not a very secure secret...',
+  resave: false,
+  saveUninitialized: false
+}))
+
+app.use(passport.initialize())
+app.use(passport.session())
+
 // logging middleware
 // Only use logging middleware when not running tests
 const debug = process.env.NODE_ENV === 'test'
@@ -15,6 +27,8 @@ app.use(express.urlencoded({ extended: true }))
 
 // static middleware
 app.use(express.static(path.join(__dirname, '../public')))
+
+app.use('/auth', require('./api/auth'))
 
 app.use('/api', require('./api')) // include our routes!
 

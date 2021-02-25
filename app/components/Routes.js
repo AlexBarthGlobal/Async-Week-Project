@@ -1,5 +1,6 @@
 import React from "react";
-import { BrowserRouter as Router, Route, NavLink, Switch } from "react-router-dom";
+import { BrowserRouter as Router, Route, NavLink, Switch, Redirect } from "react-router-dom";
+import { connect } from "react-redux";
 import HomePage from './HomePage'
 import AllCampuses from './AllCampuses'
 import AllStudents from './AllStudents'
@@ -11,8 +12,16 @@ import EditCampus from './EditCampus'
 import EditStudent from './EditStudent'
 import Page404 from './Page404'
 import CampusRegisterStudents from './CampusRegisterStudents'
+import IsLogged from './IsLogged'
+import logIn from './logIn'
+import logOut from './logOut'
+import Donate from './Donate'
 
-const Routes = () => {
+const RequireAuth = ({ children }) => {
+  return <IsLogged props={ {children} }/>
+}
+
+export const Routes = () => {
   return (
     <Router>
       <div className='Routes'>
@@ -20,19 +29,29 @@ const Routes = () => {
           <NavLink to='/' className='navLink'>Home</NavLink>
           <NavLink to='/campuses' className='navLink'>Campuses</NavLink>
           <NavLink to='/students' className='navLink'>Students</NavLink>
+          <NavLink to='/login' className='navLink'>Log In</NavLink>
+          <NavLink to='/logout' className='navLink'>Log Out</NavLink>
         </nav>
         <main>
           <Switch>
             <Route exact path='/' component={HomePage} />
-            <Route exact path='/campuses' component={AllCampuses} />
             <Route exact path='/students' component={AllStudents} />
-            <Route exact path='/campuses/registerstudents/:id' component={CampusRegisterStudents} />
-            <Route exact path='/campuses/:id' component={SingleCampusView} />
-            <Route exact path='/students/:id' component={SingleStudentView} />
-            <Route exact path='/addcampus' component={AddCampus} />
-            <Route exact path='/addstudent' component={AddStudent} />
-            <Route exact path='/campuses/edit/:id' component={EditCampus} />
-            <Route exact path='/students/edit/:id' component={EditStudent} />
+            <Route exact path='/campuses' component={AllCampuses} />         
+
+            <Route exact path='/login' component={logIn} />
+            <Route exact path='/logout' component={logOut} />
+            
+
+            <RequireAuth>
+              <Route exact path='/campuses/registerstudents/:id' component={CampusRegisterStudents} />
+              <Route exact path='/campuses/:id' component={SingleCampusView} />
+              <Route exact path='/students/:id' component={SingleStudentView} />
+              <Route exact path='/addcampus' component={AddCampus} />
+              <Route exact path='/addstudent' component={AddStudent} />
+              <Route exact path='/campuses/edit/:id' component={EditCampus} />
+              <Route exact path='/students/edit/:id' component={EditStudent} />
+            </RequireAuth>
+
             <Route component={Page404} />
           </Switch>
         </main>
@@ -41,4 +60,4 @@ const Routes = () => {
   );
 };
 
-export default Routes
+// export default Routes

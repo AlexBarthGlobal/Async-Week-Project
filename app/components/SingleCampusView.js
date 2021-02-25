@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom'
 import {fetchCampusAndItsStudents} from '../redux/singleCampus'
 import SingleStudent from './SingleStudent'
 import {unregisterStudentThunk} from '../redux/singleCampus'
+import Donate from './Donate'
 
 export class SingleCampusView extends React.Component {
 
@@ -48,6 +49,7 @@ export class SingleCampusView extends React.Component {
           <div className='marginTop bodySize'>{this.props.currCampusInfo[0].description}</div>
           <Link to={{pathname: `/campuses/edit/${this.props.currCampusInfo[0].id}`, state:{prevUrl: location.pathname}}}><button className='marginSide'>Edit Campus</button></Link>
           <Link to={{pathname: `/campuses/registerstudents/${this.props.currCampusInfo[0].id}`, state:{prevUrl: location.pathname}}}><button className='marginSide'>Register Students</button></Link>
+          <Donate />
         </div>
         {renderStudentsFromCampus}
       </div>  
@@ -61,6 +63,7 @@ export class SingleCampusView extends React.Component {
           <div className='marginTop bodySize'>{this.props.campusAndItsStudents[0].description}</div>
           <Link to={{pathname: `/campuses/edit/${this.props.campusAndItsStudents[0].id}`, state:{prevUrl: location.pathname}}}><button className='marginSide'>Edit Campus</button></Link>
           <Link to={{pathname: `/campuses/registerstudents/${this.props.campusAndItsStudents[0].id}`, state:{prevUrl: location.pathname}}}><button className='marginSide'>Register Students</button></Link>
+          <Donate />
         </div>
         {renderStudentsFromCampus}
       </div>  
