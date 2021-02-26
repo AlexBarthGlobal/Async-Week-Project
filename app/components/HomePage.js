@@ -16,7 +16,9 @@ export class HomePage extends React.Component {
        
     render () {
         return (
-            <div className='centerThis marginTop'>Welcome! Select Campuses or Students in the nav bar to get started!</div>
+            <div className='centerThis marginTop'>
+                <div>Welcome! Select Campuses or Students in the nav bar to get started!</div>
+            </div>
         )
     };
 };

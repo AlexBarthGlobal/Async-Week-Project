@@ -5,6 +5,7 @@ import SingleStudent from './SingleStudent'
 import { Link } from 'react-router-dom'
 import { deleteStudentThunk } from '../redux/students'
 import {fetchCampuses} from '../redux/campuses'
+import Anime, {anime} from 'react-anime';
 
 export class AllStudents extends React.Component {
 
@@ -37,9 +38,9 @@ export class AllStudents extends React.Component {
                 return 1;
               return 0;
           }).map(student =>
-            <div key={student.id} className='singleItemNotLogged'>
+            <Anime delay={anime.stagger(100)} scale={[.1, 0.91]} key={student.id}><div key={student.id} className='singleItemNotLogged'>
               <SingleStudent key={student.id} listId={student.id} firstName={student.firstName} lastName={student.lastName} imageUrl={student.imageUrl}/>
-            </div> 
+            </div></Anime>
             )
         } else if (this.props.user.id) {
           var allStudents = this.props.students.sort(function(a,b) {
@@ -50,12 +51,12 @@ export class AllStudents extends React.Component {
                 return 1;
               return 0;
           }).map(student =>
-            <div key={student.id} className='singleItem'>
+            <Anime delay={anime.stagger(100)} scale={[.1, 0.91]} key={student.id}><div key={student.id} className='singleItem'>
               <SingleStudent key={student.id} listId={student.id} firstName={student.firstName} lastName={student.lastName} imageUrl={student.imageUrl}/>
               <div className='centerThis'>
                 <button className='delete' onClick={() => this.props.deleteStudent(student.id)}>Delete</button>
               </div>
-            </div> 
+            </div></Anime>
             )
         }
 

@@ -6,6 +6,7 @@ import { Link } from 'react-router-dom'
 import { deleteCampusThunk } from '../redux/campuses'
 import {fetchStudents} from '../redux/students'
 import {Redirect} from 'react-router-dom'
+import Anime, {anime} from 'react-anime';
 
 export class AllCampuses extends React.Component {
  
@@ -37,9 +38,15 @@ export class AllCampuses extends React.Component {
                 return 1;
               return 0;
           }).map(campus =>
-            <div key={campus.id} className="singleItemNotLogged">
+            <Anime easing="easeOutSine"
+            duration={1000}
+            direction="alternate"
+            loop={true}
+            delay={(el, index) => index * 240}
+            translateX='0'
+            scale={[.81, 0.92]} key={campus.id}><div key={campus.id} className="singleItemNotLogged">
               <SingleCampus listId={campus.id} name={campus.campusName} imageUrl={campus.imageUrl} />
-            </div>
+            </div></Anime>
             )    
         } else if (this.props.user.id) {
           var allCampuses = this.props.campuses.sort(function(a,b) {
@@ -50,12 +57,18 @@ export class AllCampuses extends React.Component {
                 return 1;
               return 0;
           }).map(campus =>
-            <div key={campus.id} className="singleItem">
+            <Anime easing="easeOutSine"
+            duration={1000}
+            direction="alternate"
+            loop={true}
+            delay={(el, index) => index * 240}
+            translateX='0'
+            scale={[.81, 0.92]} key={campus.id}><div key={campus.id} className="singleItem">
               <SingleCampus listId={campus.id} name={campus.campusName} imageUrl={campus.imageUrl} />
               <div className='centerThis'>
                 <button onClick={() => this.props.deleteCampus(campus.id)}>Delete</button>
               </div>
-            </div>
+            </div></Anime>
             )
         }
 

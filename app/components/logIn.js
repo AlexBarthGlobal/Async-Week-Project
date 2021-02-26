@@ -5,6 +5,7 @@ import LocalLoginForm from './local-login-form'
 import OauthLoginForm from './oauth-login-form'
 import {Redirect} from 'react-router-dom'
 import {Session} from 'express-session'
+import Anime, {anime} from 'react-anime';
 
 const Login = (props) => {
   const {user, handleSubmit} = props
@@ -14,16 +15,16 @@ const Login = (props) => {
   }
 
   return (
-    <div className='h100 w100 flex column align-items-center justify-center'>
+    <Anime delay={anime.stagger(100)} scale={[.1, 1]}><div className='marginTop'>
       <h1>Log In</h1>
-      <div className='flex w50'>
+      <div className=''>
         {/* <img src='/loggin.png' /> */}
-        <div className='grow1'>
+        <div className=''>
           <LocalLoginForm handleSubmit={handleSubmit} />
           <OauthLoginForm />
         </div>
       </div>
-    </div>
+    </div></Anime>
   )
 }
 
