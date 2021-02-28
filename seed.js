@@ -1,11 +1,18 @@
 const { green, red } = require("chalk");
 const { db } = require("./server/db");
 
-const {Student, Campus} = require('./server/db')
+const {Student, Campus, User} = require('./server/db')
 
 const seed = async () => {
   try {
     await db.sync({ force: true });
+
+    // const Alex = await User.create({
+    //   email: 'alex@email.com',
+    //   password: '123'
+    // })
+
+    ///
     
     const Harvard = await Campus.create({
       campusName: 'Harvard University',

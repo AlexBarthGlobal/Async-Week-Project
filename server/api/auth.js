@@ -20,6 +20,32 @@ router.get('/me', async (req, res, next) => {
   }
 });
 
+router.post('/signup', async (req, res, next) => {
+  try {
+    const exists = await User.findOne({
+      where: {
+        email: req.body.email
+      }
+    })
+    if (exists) {
+      const err = new Error('Username exists already!')
+      err.status = 401
+      throw err;
+    } else {
+      const user = await User.create(req.body);
+      if (user) {
+        req.login(user, (err) => err ? next(err) : res.json(user))
+      } else {
+        const err = new Error('Error creating user')
+        err.status = 401
+        throw err
+      }
+    };
+  } catch (err) {
+    next(err)
+  }
+})
+
 router.put('/login', async (req, res, next) => {
   try {
     const user = await User.findOne({

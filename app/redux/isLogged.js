@@ -30,6 +30,18 @@ export const fetchMe = () => {
   }
 }
 
+export const signUp = credentials => {
+  return async dispatch => {
+    try {
+      const response = await axios.post('/auth/signup', credentials)
+      dispatch(gotMe(response.data))
+    } catch (error) {
+      console.error(error)
+    }
+  };
+}
+
+
 export const login = credentials => {
   return async dispatch => {
     try {

@@ -1,14 +1,22 @@
 const express = require('express')
 const path = require('path')
 const volleyball = require('volleyball')
+const secrets = require('../secrets')
+const {db} = require('./db'); //
 
 const app = express()
 
 const passport = require('passport')
 const session = require('express-session')
 
+const SequelizeStore = require('connect-session-sequelize')(session.Store)
+const dbStore = new SequelizeStore({ db: db })
+
+dbStore.sync();
+
 app.use(session({
-  secret: 'This is not a very secure secret...',
+  secret: secrets.SESSION_SECRET,
+  store: dbStore,
   resave: false,
   saveUninitialized: false
 }))

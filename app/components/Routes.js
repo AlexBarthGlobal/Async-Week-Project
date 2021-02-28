@@ -16,12 +16,26 @@ import IsLogged from './IsLogged'
 import logIn from './logIn'
 import logOut from './logOut'
 import Donate from './Donate'
+import SignUp from './signUp'
 
 const RequireAuth = ({ children }) => {
   return <IsLogged props={ {children} }/>
 }
 
-export const Routes = () => {
+export const Routes = (props) => {
+  console.log('props from routes')
+  console.log(props)
+
+  var log = '/login'
+  var logStatus = 'Log In'
+
+  if (props.props.user) {
+    if (props.props.user.id) {
+      log = '/logout'
+      logStatus = 'Log Out'
+    }
+  }
+  
   return (
     <Router>
       <div className='Routes'>
@@ -29,8 +43,9 @@ export const Routes = () => {
           <NavLink to='/' className='navLink'>Home</NavLink>
           <NavLink to='/campuses' className='navLink'>Campuses</NavLink>
           <NavLink to='/students' className='navLink'>Students</NavLink>
-          <NavLink to='/login' className='navLink'>Log In</NavLink>
-          <NavLink to='/logout' className='navLink'>Log Out</NavLink>
+          <NavLink to={log} className='navLink'>{logStatus}</NavLink>
+          {/* <NavLink to='/login' className='navLink'>Log In</NavLink> */}
+          {/* <NavLink to='/logout' className='navLink'>Log Out</NavLink> */}
         </nav>
         <main>
           <Switch>
@@ -39,8 +54,8 @@ export const Routes = () => {
             <Route exact path='/campuses' component={AllCampuses} />         
 
             <Route exact path='/login' component={logIn} />
+            <Route exact path='/signup' component={SignUp} />
             <Route exact path='/logout' component={logOut} />
-            
 
             <RequireAuth>
               <Route exact path='/campuses/registerstudents/:id' component={CampusRegisterStudents} />

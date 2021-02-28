@@ -12,20 +12,23 @@ const Main = class extends Component {
   }
 
   render () {
-    if (this.props.userCurrentlyBeingFetched) {
+    if (this.props.user.isFetching) {
       return (
         <h1>Loading...</h1>
       )
     }
     return (
-      <Routes />
+      <Routes props={this.props} />
     )
   }
 }
 
 function mapStateToProps (state) {
+  console.log('from main js')
   console.log(state)
-  return {userCurrentlyBeingFetched: state.userReducer.user.isFetching}
+  return { 
+    user: state.userReducer.user
+  }
 }
 
 const mapDispatchToProps = dispatch => ({
