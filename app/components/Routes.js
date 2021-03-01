@@ -13,7 +13,7 @@ import EditStudent from './EditStudent'
 import Page404 from './Page404'
 import CampusRegisterStudents from './CampusRegisterStudents'
 import IsLogged from './IsLogged'
-import logIn from './logIn'
+import LogIn from './logIn'
 import logOut from './logOut'
 import Donate from './Donate'
 import SignUp from './signUp'
@@ -53,7 +53,7 @@ export const Routes = (props) => {
             <Route exact path='/students' component={AllStudents} />
             <Route exact path='/campuses' component={AllCampuses} />         
 
-            <Route exact path='/login' component={logIn} />
+            <Route exact path='/login' component={LogIn} />
             <Route exact path='/signup' component={SignUp} />
             <Route exact path='/logout' component={logOut} />
 

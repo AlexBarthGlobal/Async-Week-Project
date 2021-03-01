@@ -11,10 +11,18 @@ let flag = 0;
 
 const SignUp = (props) => {
   const {user, handleSubmit} = props
+    console.log('props from signup')
+  console.log(props)
   
   if (user.id) {
     return <Redirect to='/' />
   }
+
+  if (props.location.state) {
+    if (props.location.state.fromLogIn > 0) {
+        flag = 0;
+    }
+  } 
 
   if (flag > 0) {
     var message = (<div className='marginBottom'>

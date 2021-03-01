@@ -9,6 +9,7 @@ import Anime, {anime} from 'react-anime';
 let flag = 0;
 
 const Login = (props) => {
+  console.log(props)
   const {user, handleSubmit} = props
 
   console.log('LOGIN PROPS')
@@ -24,10 +25,13 @@ const Login = (props) => {
     }
   } 
 
+  
   if (flag > 0) {
     var message = (<div className='marginBottom'>Invalid email or password.</div>)
     flag = 0;
   }
+
+  
 
   // const resetRecentlyLogged = () => {
   //   if (recentLog) {
@@ -51,7 +55,10 @@ const Login = (props) => {
         <div className=''>
           <LocalLoginForm handleSubmit={handleSubmit} />
           <OauthLoginForm />
-          <Link to={`/signup`}><button>Sign up</button></Link>
+          <Link to={{
+            pathname: '/signup',
+            state: {fromLogIn: 1}
+          }}><button>Sign up</button></Link>
         </div>
       </div>
     </div></Anime>
