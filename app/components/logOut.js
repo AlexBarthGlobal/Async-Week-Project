@@ -4,10 +4,10 @@ import {connect} from 'react-redux'
 import {logout} from '../redux/isLogged'
 import Login from './logIn'
 
-var readyToRedirect = (<div></div>)
-
 const UserPage = (props) => {
   const {user, logThemOut} = props
+
+  var readyToRedirect
 
   console.log('PROPS BEFORE LOGOUT')
   console.log(props)

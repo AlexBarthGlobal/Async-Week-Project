@@ -23,9 +23,8 @@ const Login = (props) => {
     if (props.location.state.recentlyLogged > 0) {
     var recentLog = (<div className='marginBottom'>Successfully logged out.</div>)
     }
-  } 
+  }
 
-  
   if (flag > 0) {
     var message = (<div className='marginBottom'>Invalid email or password.</div>)
     flag = 0;

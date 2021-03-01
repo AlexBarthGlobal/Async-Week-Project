@@ -66,7 +66,7 @@ export const logout = () => {
 
 const initialState = {
   user: {
-    isFetching: true
+    isFetching: true,
   }
 }
 
