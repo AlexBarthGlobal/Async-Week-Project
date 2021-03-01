@@ -9,16 +9,23 @@ var readyToRedirect = (<div></div>)
 const UserPage = (props) => {
   const {user, logThemOut} = props
 
+  console.log('PROPS BEFORE LOGOUT')
+  console.log(props)
+
   logThemOut();
 
-  if (user) {
+  console.log('PROPS AFTER LOGOUT')
+  console.log(props)
+
+  // if (user) {
     if (!user.id) {
+      console.log('REDIRECTING...')
     readyToRedirect = <Redirect to={{
       pathname: '/login',
       state: {recentlyLogged: 1}
     }}
     />
-    }
+    // }
   }
     
 
