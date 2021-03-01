@@ -8,13 +8,15 @@ import {fetchMe} from '../app/redux/isLogged'
 
 const Main = class extends Component {
   componentDidMount () {
+    console.log('fetching stuff Main')
     this.props.fetchMe()
   }
 
   render () {
     if (this.props.user.isFetching) {
       return (
-        <h1>Loading...</h1>
+        // <h1>Loading...</h1>
+        <h1></h1>
       )
     }
     return (

@@ -43,8 +43,7 @@ passport.serializeUser((user, done) => {
 passport.deserializeUser(async (id, done) => {
     try {
       const user = await User.findByPk(id)
-      // will mean that `req.user` is equal to the user we just found
-      done(null, user)
+      done(null, user)  // will mean that `req.user` is equal to the user we just found
     } catch (error) {
       done(error)
     }

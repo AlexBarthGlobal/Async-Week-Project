@@ -26,14 +26,14 @@ export class HomePage extends React.Component {
 const mapState = (state) => {
     return {
         students: state.students.data,
-        campuses: state.campuses.data
+        campuses: state.campuses.data,
     };
 };
 
 const mapDispatch = (dispatch) => {
     return {
         loadStudents: () => dispatch(fetchStudents()),
-        loadCampuses: () => dispatch(fetchCampuses())
+        loadCampuses: () => dispatch(fetchCampuses()),
     };
 };
 

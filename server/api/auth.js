@@ -5,7 +5,7 @@ module.exports = router;
 router.get('/me', async (req, res, next) => {
   try {
     console.log(req.session)
-    if (!req.session.passport) {
+    if (!req.session.passport.user) {
       res.sendStatus(401);
     } else {
       const user = await User.findByPk(req.session.passport.user);
