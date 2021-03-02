@@ -21,7 +21,7 @@ const Login = (props) => {
 
   if (props.location.state) {
     if (props.location.state.recentlyLogged > 0) {
-    var recentLog = (<div className='marginBottom'>Successfully logged out.</div>)
+    var recentLog = (<div className='marginBottom'>Successfully logged out.</div>);
     }
   }
 
@@ -29,21 +29,6 @@ const Login = (props) => {
     var message = (<div className='marginBottom'>Invalid email or password.</div>)
     flag = 0;
   }
-
-  
-
-  // const resetRecentlyLogged = () => {
-  //   if (recentLog) {
-  //     if (props.location.state) {
-  //       if (props.location.state.recentlyLogged) {
-  //         props.location.state.recentlyLogged = 0;
-  //       }
-  //     };
-  //   }
-  // }
-
-  
-
 
   return (
     <Anime delay={anime.stagger(100)} scale={[.1, 1]}><div className='marginTop'>
